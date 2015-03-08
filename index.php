@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Index</title>
-		<link rel="stylesheet" href="css/style.css">
+		<link rel="stylesheet" href="assets/css/style.css">
 		<script>
 			
 		</script>
@@ -58,4 +58,4 @@
 			</tr>
 		</table>
 	</body>
-</html>	
+</html>
