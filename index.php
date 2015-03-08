@@ -1,61 +1,81 @@
 <html>
-	<head>
-		<title>Index</title>
-		<link rel="stylesheet" href="assets/css/style.css">
-		<script>
-			
-		</script>
-	</head>
-	<body>
-		<table>
-			<tr>
-				<td colspan="2" id="pageheader">
-					Application Header
-				</td>
-			</tr>
-			<tr>
-				<td id="mainnav">
-					<div class="menuitem">menu 1</div>
-					<div class="menuitem">menu 2</div>
-					<div class="menuitem">menu 3</div>
-					<div class="menuitem">menu 4</div>
-				</td>
-				<td id="content">
-					<div id="divPageMenu">
-						<span class="menuitem" >page menu 1</span>
-						<span class="menuitem" >page menu 2</span>
-						<span class="menuitem" >page menu 3</span>
-						<input type="text" id="txtSearch" />
-						<span class="menuitem">search</span>		
-					</div>
-					<div id="divStatus" class="status">
-						status message
-					</div>
-					<div id="divContent">
-						Content space
-						<span class="clickspot">click here </span>
-						<table id="tableExample" class="reportTable" width="100%">
-							<tr class="header">
-								<td>column1</td>
-								<td>column2</td>
-								<td>column3</td>
-								<td>column4</td>
-							</tr>
-							<tr class="row1">
-								<td>data example</td>
-								<td>123</td>
-								<td>01/01/2014</td>
-								<td>data</td>
-							</tr>
-							<tr class="row2">
-								<td>data example</td>
-								<td>123</td>
-								<td>01/01/2014</td>
-								<td>data</td>
-							</tr>
-					</div>
-				</td>
-			</tr>
-		</table>
-	</body>
+
+<head>
+    <title>Index</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/css/animate.css">
+    <script>
+    </script>
+</head>
+
+<body>
+    <table class="container">
+        <tr>
+            <td colspan="2" id="pageheader" style="display:none;">
+                Application Header
+            </td>
+        </tr>
+        <tr>
+            <td id="sidemenu">
+<!--               <div class="sideHeader">Menu<i class="fa fa-bars"></i></div>-->
+                <div class="sideMenuItem"><a href="#"><i class="fa fa-bars"></i></a>
+                </div>
+                <div class="sideMenuItem"><a href="#">Side Menu 2</a>
+                </div>
+                <div class="sideMenuItem"><a href="#">Side Menu 3</a>
+                </div>
+                <div class="sideMenuItem"><a href="#">Side Menu 4</a>
+                </div>
+                <div class="sideMenuItem"><a href="#">Side Menu 5</a>
+                </div>
+            </td>
+            <td id="content">
+                <div id="divPageMenu">
+                    <span class="menuitem">page menu 1</span>
+                    <span class="menuitem">page menu 2</span>
+                    <span class="menuitem">page menu 3</span>
+                    <input type="text" id="txtSearch" />
+                    <span class="menuitem">search</span>
+                </div>
+                <div id="divStatus" class="status">
+                    status message
+                </div>
+                <div id="divContent">
+                    Content space
+                    <span class="clickspot">click here </span>
+                    <table id="tableExample" class="reportTable" width="100%">
+                        <tr class="header">
+                            <td>column1</td>
+                            <td>column2</td>
+                            <td>column3</td>
+                            <td>column4</td>
+                        </tr>
+                        <tr class="row1">
+                            <td>data example</td>
+                            <td>123</td>
+                            <td>01/01/2014</td>
+                            <td>data</td>
+                        </tr>
+                        <tr class="row2">
+                            <td>data example</td>
+                            <td>123</td>
+                            <td>01/01/2014</td>
+                            <td>data</td>
+                        </tr>
+                    </table>
+                </div>
+            </td>
+        </tr>
+    </table>
+    <script src="assets/js/jquery-2.1.1.min.js"></script>
+    <script src="assets/js/jquery.easing.min.js"></script>
+</body>
+
 </html>
+
+
+
+
+
+
