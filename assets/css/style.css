@@ -3,6 +3,7 @@
 html{
     height: 100%;
     width: 100%;
+    background-color: #fff;
     font-family: "Open Sans Light", sans-serif;
 }
 
@@ -33,31 +34,49 @@ body{
 	background-color:Yellow
 }
 
+#divPageMenu {
+    display: block;
+    width:100.4%;
+    min-width:11.85in;
+    background-color: #f37520;
+    padding: 10px 0px 10px 0px;
+    margin-left: -3px;
+
+}
+
 .menuitem {
 	text-decoration:none;
 	background-color:#f37520;
     color:#fff;
 	cursor:hand;
     border: 1px solid none;
-    width: 80px;
+    width: 1.4em;
+    height: inherit;
+    font-size: 0.8em;
+    border-right: 1px grove #272727;;
     border-radius: 1px;
-    margin: 0 auto;
-    margin-left: 10px;
-    padding: 10px
-
+    margin-left: 1px;
+    padding: 15px 10px 15px 10px;
 
 }
+div.menuitem:hover{
+    background-color: #272727;
+}
 .menuitem:hover{
-	text-decoration:underline;
+	text-decoration:none;
 	cursor:hand;
 	font-weight:bold;
-	background-color:Silver
+	background-color:#272727;
+     transition:background-color 0.5s ease;
+    -o-transition:background-color 0.5s ease;
+    -webkit-transition:background-color 0.5s ease;
+    -moz-transition:color 0.5s ease;
 }
 
 #pageheader
 {
     height: 1in;
-    background-color: #FFCC66;
+    background-color: #666;
     font-size: large;
     text-align: center;
 }
@@ -72,6 +91,7 @@ body{
 	width:11.85in;
     margin-left: 500px;
 	vertical-align:top;
+    /* visibility: hidden;*/
 	
 }
 
@@ -83,8 +103,9 @@ body{
 
 .reportTable .header
 {
-    background-color: #CC6600;
+    background-color: #f37520;
     text-transform: uppercase;
+    padding: 10px 0px 0px 20px;
     color: White;
 }
 
@@ -164,6 +185,17 @@ table.container {
     border: 1px solid none;
 }
 
+#menu.sideMenuItem {
+    text-align: center;
+    border: 1px solid none;
+    text-decoration-color: #fff;
+    padding: 10px 0px 10px 0px;
+}
+#menu.sideMenuItem i{
+    font-size: 2em;
+    padding-right:10px;
+}
+
 .sideMenuItem {
     text-align: center;
     border: 1px solid none;
@@ -171,8 +203,11 @@ table.container {
     padding: 10px 0px 10px 0px;
 }
 .sideMenuItem i{
-    font-size: 1.6em;
+    font-size: 2em;
+    padding-right:10px;
 }
+
+
 
 .sideMenuItem:hover{
    color:#F37520;
@@ -187,6 +222,8 @@ table.container {
     -moz-transition:border-right 0.5s ease;
 
 }
+
+
 
 .sideMenuItem:before{
    color:#F37520;
@@ -205,10 +242,80 @@ table.container {
 
 
 
-#divPageMenu {
-    margin-top: 10px;
-    padding-top: 10px;
-    margin-bottom: 40px;
-    margin-left: 20px;
-    margin-right: 20px;
+
+#txtSearch {
+    padding-left: 10px;
+    border: 1px solid none;
+    border-bottom: 1px solid #272727;
+    border-radius: 5px;
+    width: 25%;
+    height: 30px;
+    text-decoration: none;
+}
+
+#content hide {
+    display: none;
+}
+
+.hide {
+    display: none;
+}
+
+#sidemenu {
+    background-color: #272727;
+    color: aliceblue;
+    vertical-align: top;
+    z-index: 999;
+    padding: 0px;
+    margin-top: -20px;
+    padding-top:60px;
+    cursor: hand;
+    width: 12%;
+    min-width: 150px;
+    height: 100%;
+    border: 1px solid none;
+}
+
+#menu2 {
+    text-align: center;
+    border: 1px solid none;
+    color: aliceblue;
+    padding: 10px 0px 10px 0px;
+    background-color: #272727;
+    vertical-align: top;
+    position: absolute;
+    z-index: 1000;
+    margin-top: 65px;
+    padding-top:10px;
+    padding-bottom:0px;
+    cursor: hand;
+    width: 3%;
+    min-width: 60px;
+    height: 5%;
+    border: 1px solid none;
+}
+#menu2 i{
+    font-size: 1.6em;
+}
+
+#menu2:hover{
+   color:#F37520;
+   background-color: #272727;
+   border-left: 6px solid #af4600;
+    transition:color 0.5s ease;
+    -o-transition:color 0.5s ease;
+    -webkit-transition:color 0.5s ease;
+    -moz-transition:color 0.5s ease;
+    transition:border-left 0.5s ease;
+    -o-transition:border-left 0.5s ease;
+    -webkit-transition:border-left 0.5s ease;
+    -moz-transition:border-left 0.5s ease;
+
+}
+
+
+
+div.active {
+    color:#F37520 !important;
+    border-right: 3px solid #F37520;
 }

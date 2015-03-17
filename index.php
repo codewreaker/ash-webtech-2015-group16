@@ -17,26 +17,26 @@
             </td>
         </tr>
         <tr>
-            <td id="sidemenu">
-<!--               <div class="sideHeader">Menu<i class="fa fa-bars"></i></div>-->
-                <div class="sideMenuItem"><a href="#"><i class="fa fa-bars"></i></a>
+           <div class="hide" id="menu2"><a href="#"><i class="fa fa-bars"></i></a></div>
+            <td id="sidemenu" >
+                <div class=" sideMenuItem " id="menu"><a href="#"><i class="fa fa-bars"></i></a>
                 </div>
-                <div class="sideMenuItem"><a href="#">Side Menu 2</a>
+                <div class="sideMenuItem active " title="Personnel"><a href="#"><i class="fa fa-user"></i></a>
                 </div>
-                <div class="sideMenuItem"><a href="#">Side Menu 3</a>
+                <div class="sideMenuItem  " title="Create Task"><a href="#"><i class="fa fa-plus"></i></a>
                 </div>
-                <div class="sideMenuItem"><a href="#">Side Menu 4</a>
+                <div class="sideMenuItem  " title="Report"><a href="#"><i class="fa fa-edit"></i></a>
                 </div>
-                <div class="sideMenuItem"><a href="#">Side Menu 5</a>
+                <div class="sideMenuItem  " title="Logout"><a href="#"><i class="fa fa-power-off"></i></a>
                 </div>
             </td>
             <td id="content">
                 <div id="divPageMenu">
-                    <span class="menuitem">page menu 1</span>
-                    <span class="menuitem">page menu 2</span>
-                    <span class="menuitem">page menu 3</span>
+                    <span class="menuitem">1</span>
+                    <span class="menuitem">2</span>
+                    <span class="menuitem">3</span>
                     <input type="text" id="txtSearch" />
-                    <span class="menuitem">search</span>
+                    <span class="menuitem">s</span>
                 </div>
                 <div id="divStatus" class="status">
                     status message
@@ -70,6 +70,7 @@
     </table>
     <script src="assets/js/jquery-2.1.1.min.js"></script>
     <script src="assets/js/jquery.easing.min.js"></script>
+    <script src="assets/js/script.js"></script>
 </body>
 
 </html>
