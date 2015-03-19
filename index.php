@@ -32,6 +32,7 @@
             </td>
             <td id="content">
                 <div id="divPageMenu">
+                   <span id="pageheader">Task Manager</span>
                     <span class="menuitem">1</span>
                     <span class="menuitem">2</span>
                     <span class="menuitem">3</span>
@@ -70,10 +71,12 @@
     </table>
     <script src="assets/js/jquery-2.1.1.min.js"></script>
     <script src="assets/js/jquery.easing.min.js"></script>
+    <script src="assets/js/customanimate.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 
 </html>
+
 
 
 

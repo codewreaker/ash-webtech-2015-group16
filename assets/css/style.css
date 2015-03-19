@@ -73,12 +73,15 @@ div.menuitem:hover{
     -moz-transition:color 0.5s ease;
 }
 
-#pageheader
-{
+#pageheader{
     height: 1in;
-    background-color: #666;
-    font-size: large;
+    font-size: 1.3em;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bolder;
     text-align: center;
+    color: #fff;
+    padding-left: 10px;
+    padding-right: 50px;
 }
 
 #mainnav{
@@ -167,7 +170,7 @@ div.menuitem:hover{
 
 table.container {
    width: 100%;
-    min-height: 100%;
+   min-height: 100%;
 }
 
 #sidemenu {
