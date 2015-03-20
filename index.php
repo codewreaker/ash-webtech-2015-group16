@@ -40,7 +40,7 @@
                         <span class="menuitem"></span>
                         <span class="menuitem"></span>
                         <span class="menuitem"></span>
-                        <input type="text" id="txtSearch" />
+                        <input type="search" id="txtSearch" />
                         <span class="menuitem">s</span>
                     </div>
                     <div id="divContent">
@@ -53,28 +53,14 @@
 
                         <!-- Create Task Page -->
                         <div id="createTaskPage" class="hide">
-                          <form action="POST" class="createForm">
-                             <div class="divider"></div>
-                              <input type="text" placeholder="Task Name" >
-                              <select name="" id="" >
-                                 <option value="0">Select a Personnel</option>
-                                  <option value="1"></option>
-                                  <option value="2"></option>
-                                  <option value="3"></option>
-                                  <option value="4"></option>
-                                  <option value="5"></option>
-                              </select>
-                              <input type="date">
-<!--
-                              <textarea placeholder="description">
-                              </textarea>
--->
-                              <input type="button" value="Save Task"/>
-                          </form>
-                           <div class="create">
-                               <span class=""></span><i class="fa fa-plus"></i><p>Add New Task</p>
+                            <div id="formSection">
+                                
+                            </div>
+                            <div class="create">
+                                <span class=""></span><i class="fa fa-plus"></i>
+                                <p>Add New Task</p>
 
-                           </div>
+                            </div>
                         </div>
                         <!-- / Create task page -->
 
