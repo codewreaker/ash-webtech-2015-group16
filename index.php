@@ -24,17 +24,17 @@
             <td id="sidemenu">
 
                 <div style="text-align:center;padding-bottom:5px;font-size:1.4em;">Menu</div>
-                <div class="sideMenuItem active " title="Personnel" id="admin"><a href="#adminPage"><i class="fa fa-user"></i></a>
+                <div class="sideMenuItem active " title="Personnel" id="admin"><a href="#"><i class="fa fa-user"></i></a>
                 </div>
-                <div class="sideMenuItem  " title="Create Task" id="createTask"><a href="#createTaskPage"><i class="fa fa-plus"></i></a>
+                <div class="sideMenuItem  " title="Create Task" id="createTask"><a href="#"><i class="fa fa-plus"></i></a>
                 </div>
-                <div class="sideMenuItem  " title="Report" id="viewReport"><a href="#viewReportPage"><i class="fa fa-edit"></i></a>
+                <div class="sideMenuItem  " title="Report" id="viewReport"><a href="#"><i class="fa fa-edit"></i></a>
                 </div>
-                <div class="sideMenuItem  " title="Logout" id="logout"><a href="#logoutPage"><i class="fa fa-power-off"></i></a>
+                <div class="sideMenuItem  " title="Logout" id="logout"><a href="#"><i class="fa fa-power-off"></i></a>
                 </div>
             </td>
-            <div class="mainArea">
-                <td id="content">
+            <div  >
+                <td  id="content" class="adjust" >
                     <div id="divPageMenu">
                         <span id="pageheader">Task Manager</span>
                         <span class="menuitem"></span>
@@ -43,16 +43,16 @@
                         <input type="search" id="txtSearch" />
                         <span class="menuitem">s</span>
                     </div>
-                    <div id="divContent">
+                    <div id="divContent" >
 
                         <!-- Add Admin Page -->
-                        <div id="adminPage" class="">
+                        <div id="adminPage" class="animated fadeIn">
                             <text>Hello Iam here</text>
                         </div>
                         <!-- End Admin Page -->
 
                         <!-- Create Task Page -->
-                        <div id="createTaskPage" class="hide">
+                        <div id="createTaskPage" class="hide animated fadeIn">
                             <div id="formSection">
                                 
                             </div>
@@ -65,13 +65,13 @@
                         <!-- / Create task page -->
 
                         <!-- viewReportPage -->
-                        <div id="viewReportPage" class="hide">
+                        <div id="viewReportPage" class="hide animated fadeIn">
                             You are on the viewReportPage
                         </div>
                         <!-- / viewReportPage -->
 
                         <!--logoutPage -->
-                        <div id="logoutPage" class="hide">
+                        <div id="logoutPage" class="hide animated fadeIn">
                             You are on the logout Page
                         </div>
                         <!--/logoutPage -->

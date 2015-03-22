@@ -1,11 +1,6 @@
 /*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);*/
 
-html {
-    height: 100%;
-    width: 100%;
-    background-color: #ebebeb;
-    font-family: "Open Sans Light", sans-serif;
-}
+
 a {
     text-decoration: none;
     color: inherit;
@@ -14,9 +9,10 @@ body {
     margin-left: -3px;
     margin-top: -5px;
     margin-bottom: -2px;
-    padding: 0;
     min-height: 100%;
     width: 100%;
+     background-color: #ebebeb;
+    font-family: "Open Sans Light", sans-serif;
 }
 .clickspot {
     text-decoration: underline;
@@ -33,7 +29,7 @@ body {
 #divPageMenu {
     display: block;
     width: 100%;
-    min-width: 11.85in;
+    min-width: 100%;
     height: 40px;
     background-color: #e74c3c;
     padding: 1px 0px 10px 0px;
@@ -338,22 +334,39 @@ div.active {
 .shiftRight {
     position: absolute;
     left: 200px;
+
 }
-.mainArea {
-    margin-left: 50px;
-}
+
 #divContent {
     position: absolute;
     border: 1px solid none;
     background-color: #fff;
-    margin: 6 auto;
-    width: 94%;
+    margin:  auto;
+    width: 95%;
     height: inherit;
-    min-width: 10px;
     min-height: 600px;
-    border-radius: 5px;
-    padding: 30px 40px 10px 200px;
+    padding: 30px 40px 10px 20px;
 }
+
+@media(max-width:1299px){
+    #divContent {
+    width: 93% !important;
+    height: inherit;
+}
+}
+
+@media(max-width:870px){
+    #divContent {
+    width: 92% !important;
+    height: inherit;
+}
+}
+
+
+
+
+
+
 .divider {
     border-top: 1px solid rgba(231, 76, 60, 0.28);
     padding-bottom: 10px;
@@ -411,6 +424,20 @@ label {
 
 .optionalFeatures span{
     padding: 5px;
+}
+
+
+
+.adjust {
+    transition-delay: 0.5s;
+    transition-duration: 0.9s;
+    left: -350px !important;
+    width: 88.5% !important;
+/*
+    animation-delay: 0.5s;
+    -webkit-animation-delay: 0.5s;
+*/
+
 }
 
 

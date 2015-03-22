@@ -6,8 +6,10 @@ $(document).ready(function() {
     $('#menu').click(function() {
         var shiftLeft = 'animated bounceIn shiftLeft';
         var shiftRight = 'animated slideInLeft shiftRight';
+        var adjust = 'adjust';
         if (count % 2 == 0) {
             $(this).removeClass(shiftRight);
+            $("#content").removeClass(adjust);
             $("#sidemenu").removeClass('animated slideInLeft');
             $("#sidemenu").addClass('animated slideOutLeft');
             $(this).addClass(shiftLeft);
@@ -16,6 +18,8 @@ $(document).ready(function() {
             $(this).addClass(shiftRight);
             $("#sidemenu").removeClass('animated slideOutLeft');
             $("#sidemenu").addClass('animated slideInLeft');
+            $("#content").removeClass(adjust);
+            $("#content").addClass(adjust);
         }
         count++;
     });
