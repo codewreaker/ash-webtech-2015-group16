@@ -1,7 +1,7 @@
 <?php
 
 /**
- * author: 
+ * author:
  * date:
  * description: A root class for all manage classes. This class communicates with DB
  */
@@ -35,7 +35,7 @@ class adb {
     var $result;
 
     function adb() {
-       
+
         $this->er_code_prefix=1000;
         $this->link=false;
         $this->result = false;
@@ -46,7 +46,7 @@ class adb {
      */
     function log_error($level, $code, $msg, $mysql_msg = "NONE") {
         $er_code = $this->er_code_prefix + $code;
-		//call to a predefined function 
+		//call to a predefined function
         $log_id = log_msg($level, $er_code, $msg, $mysql_msg);
         //if log id is false return 0;
         if (!$log_id) {
@@ -69,7 +69,7 @@ class adb {
         }
         //try to connect to db
         $this->link = mysql_connect(DB_HOST , DB_USER, DB_PWORD);
-		
+
         if (!$this->link) {
             //if connection fail log error and set $str_error
             //echo "not connected";	//debug line
@@ -78,7 +78,7 @@ class adb {
         }
 		//echo "connected";
         if (!mysql_select_db(DB_NAME)) {
-            
+
             $log_id = $this->log_error(LOG_LEVEL_DB_FAIL,2, "select db failed   in db:connect()", mysql_error($this->link));
             return false;
         }
@@ -86,7 +86,7 @@ class adb {
         return true;
     }
 
-        
+
 	/**
 	*returns a row from a data set
 	*/
@@ -95,14 +95,14 @@ class adb {
     }
 
     /**
-	* connect to db and run a query 
+	* connect to db and run a query
 	*/
     function query($str_sql) {
-		
-        if (!$this->connect()) {		
+
+        if (!$this->connect()) {
             return false;
         }
-        
+
         $this->result = mysql_query($str_sql,$this->link);
         if (!$this->result) {
             $this->log_error(LOG_LEVEL_DB_FAIL, 4, "query failed", mysql_error($this->link));
@@ -111,7 +111,7 @@ class adb {
 
         return true;
     }
-	
+
 	/**
 	* returns number of rows in current dataset
 	*/
@@ -119,12 +119,12 @@ class adb {
         return mysql_num_rows($this->result);
     }
 	/**
-	*returns last auto generated id 
+	*returns last auto generated id
 	*/
     function get_insert_id() {
         return mysql_insert_id($this->link);
     }
-	
+
 }
 
 ?>

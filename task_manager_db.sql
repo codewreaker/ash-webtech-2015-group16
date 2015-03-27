@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: 127.0.0.1
--- Generation Time: Feb 24, 2015 at 09:52 PM
+-- Generation Time: Mar 27, 2015 at 12:45 PM
 -- Server version: 5.6.21
 -- PHP Version: 5.6.3
 
@@ -15,7 +15,6 @@ SET time_zone = "+00:00";
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
 /*!40101 SET NAMES utf8 */;
-
 
 create Database `task_manager_db`;
 use `task_manager_db`;
@@ -34,11 +33,19 @@ CREATE TABLE IF NOT EXISTS `t_personnel` (
   `user_name` varchar(255) NOT NULL,
   `password` varchar(14) NOT NULL,
   `task_id` int(10) DEFAULT NULL,
+  `p_type` varchar(10) NOT NULL,
   `position` varchar(255) NOT NULL,
   `contact` varchar(20) DEFAULT NULL
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=latin1;
 
+--
+-- Dumping data for table `t_personnel`
+--
 
+INSERT INTO `t_personnel` (`pid`, `first_name`, `last_name`, `user_name`, `password`, `task_id`, `p_type`, `position`, `contact`) VALUES
+(1, 'Israel ', 'Agyeman-Prempeh', 'israel.prempeh', 'admin123', NULL, 'admin', 'Senior Doctor', '233272134165'),
+(2, 'Akosua', 'Gyamfua', 'akosua.gyamfua', 'guest', NULL, 'non-admin', 'Doctor', '233245677655'),
+(3, 'Stephen', 'Donkoh', 'stephen.donkoh', 'guest', NULL, 'non-admin', 'Nurse', '233275677655');
 
 -- --------------------------------------------------------
 
@@ -65,13 +72,9 @@ CREATE TABLE IF NOT EXISTS `t_task` (
   `description` varchar(2000) NOT NULL,
   `task_admin` int(10) NOT NULL,
   `task_personnel` int(10) NOT NULL,
-  `date` date NOT NULL,
-  `start_time` time DEFAULT NULL,
-  `end_time` time DEFAULT NULL,
+  `due_date` date NOT NULL,
   `report_id` int(11) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
-
-
 
 --
 -- Indexes for dumped tables
@@ -103,7 +106,7 @@ ALTER TABLE `t_task`
 -- AUTO_INCREMENT for table `t_personnel`
 --
 ALTER TABLE `t_personnel`
-MODIFY `pid` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2;
+MODIFY `pid` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 --
 -- AUTO_INCREMENT for table `t_task`
 --
