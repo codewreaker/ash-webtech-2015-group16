@@ -27,23 +27,26 @@ class t_task extends adb{
 						WHERE task_id= $task_id";
 			return $this->query($str_query);
 	}
-	function get_task($task_id){
-			$str_query="select * from t_task where Task_ID =$task_id";
-			if ($this->query($str_query)){
-				return false;
-            }
-			else{
-				return $this->fetch_assoc();
-			}
-	}
-	/*
-	function test_input($checkTest) {
-			$checkTest = trim($checkTest);
-			$checkTest = stripslashes($checkTest);
-			$checkTest = htmlspecialchars($checkTest);
-			return $checkTest;
-}
-*/
+
+//	function get_task($task_id){
+//			$str_query="select * from t_task where Task_ID =$task_id";
+//			if (!$this->query($str_query)){
+//				return false;
+//            }
+//			else{
+//				return $this->fetch_assoc();
+//			}
+//	}
+
+    function get_task(){
+        $str_query = "SELECT `task_id`, `task_name`, `description`, `task_admin`, `task_personnel`, `due_date`, `report_id` FROM `t_task` ";
+        if(!$this->query($str_query)){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 
 }
 ?>

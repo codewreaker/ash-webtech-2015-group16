@@ -6,6 +6,7 @@
 // Option 4 add_report
 // Option 5 delete_report
 // Option 6 edit_report
+// Option 7 fecth all contents
 $option = $_REQUEST['opt'];
 
 switch($option){
@@ -28,11 +29,13 @@ switch($option){
          include_once("t_task.php");
          $obj = new t_task();
          $task_id = $_POST['tid'];
-         if(!$obj->delete_task($task_id)){
+         $result = $obj->delete_task($task_id);
+         if(!$result){
             echo '{"result":0,"message":"Failed To Delete"}';
+            return;
          }
          else{
-            echo '{"result":1,"message":"Successfully Deleted Task"}';
+            echo '{"result":1,"message":"Succesfully Deleted"}';
          }
         break;
     case 3:
@@ -48,6 +51,7 @@ switch($option){
         $status = $_POST['st'];
         if(!$obj->add_report($report_id, $limitations,$errors,$status)){
             echo '{"result":0,"message":"Failed to Add Report"}';
+            return;
         }else{
             echo '{"result":1,"message":"Your Report has been added"}';
         }
@@ -59,6 +63,25 @@ switch($option){
     case 6:
         include_once("t_report.php");
         $obj = new t_task();
+        break;
+    case 7:
+        include_once("t_task.php");
+        $obj = new t_task();
+        if(!$obj->get_task()){
+            echo '{"result":1,"message":"failed to fectch data"}';
+            return;
+        }else{
+            $row=$obj->fetch();
+	       echo '{"result":1,"products":[';	/*start of json object*/
+	       while($row){
+		      echo json_encode($row);/*convert the result array to json object*/
+		      $row=$obj->fetch();
+		      if($row){
+			     echo ",";					/*if there are more rows, add comma*/
+		      }
+	       }
+	       echo "]}";
+        }
         break;
     default:
 }

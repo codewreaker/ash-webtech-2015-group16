@@ -25,10 +25,12 @@ $(document).ready(function() {
     $("body").on('click', '#formSection2 .cancel', function() {
         removeForm(2);
     });
+    fetchTableJSON();
     editOptions();
     addTask();
     deleteTask();
     addReport();
+    getTuplePrimaryID();
 
 
 
@@ -46,12 +48,12 @@ $(document).ready(function() {
             if (dataString != null) {
                 var obj = sendRequest(dataString);
                 if (obj.result == 1) {
-                    alertMessage(obj.message,1,1);
-                } else if(obj.result == 0) {
-                    alertMessage(obj.message,3,1);
+                    alertMessage(obj.message, 1, 1);
+                } else if (obj.result == 0) {
+                    alertMessage(obj.message, 3, 1);
                 }
             } else {
-                alertMessage("Please Fill All Fields", 2,1);
+                alertMessage("Please Fill All Fields", 2, 1);
             }
         });
     }
@@ -63,12 +65,12 @@ $(document).ready(function() {
             if (dataString != null) {
                 var obj = sendRequest(dataString);
                 if (obj.result == 1) {
-                    alertMessage(obj.message,1,2);
-                }else if(obj.result == 0) {
-                    alertMessage(obj.message,3,2);
+                    alertMessage(obj.message, 1, 2);
+                } else if (obj.result == 0) {
+                    alertMessage(obj.message, 3, 2);
                 }
             } else {
-                alertMessage("Please Fill All Fields", 2,2);
+                alertMessage("Please Fill All Fields", 2, 2);
             }
         });
     }
@@ -78,14 +80,14 @@ $(document).ready(function() {
     function deleteTask() {
         $("body").on('click', '.fa-trash-o', function() {
             //var dataString = 'cmd=2&tid='+selectedTuple;
-            var dataString = 'opt=2&tid='+34;
+            var dataString = 'opt=2&tid=' + 34;
             // validation of form data here
             // AJAX code to submit form
             var obj = sendRequest(dataString);
             if (obj.result == 1) {
-                alertMessage(obj.message, 1,1);
-            } else if(obj.result == 0) {
-                alertMessage(obj.message, 2,1);
+                alertMessage(obj.message, 1, 1);
+            } else if (obj.result == 0) {
+                alertMessage(obj.message, 2, 1);
             }
         });
     }
@@ -97,7 +99,7 @@ $(document).ready(function() {
         var personnel = $("#tp").val();
         var date = $("#td").val();
         var description = $("#desc").val();
-        var dataString = 'opt=1&tn=' + name + '&desc=' + description +'&admin='+admin+'&tp=' + personnel + '&td=' + date;
+        var dataString = 'opt=1&tn=' + name + '&desc=' + description + '&admin=' + admin + '&tp=' + personnel + '&td=' + date;
         if (name == '' || personnel == '' || date == '' || description == '') {
             dataString = null;
         }
@@ -106,17 +108,18 @@ $(document).ready(function() {
 
     // Get the data from the form and validate before returning
     function getReportPost() {
-         var reportId = selectedTuple;
-         var limitations = $("#lim").val();
-         var errors = $("#err").val();
-         var status = getStatus();
-         var dataString = 'opt=4&rid=' + reportId + '&lim=' + limitations + '&err=' + errors + '&st=' + status;
+        var reportId = selectedTuple;
+        var limitations = $("#lim").val();
+        var errors = $("#err").val();
+        var status = getStatus();
+        var dataString = 'opt=4&rid=' + reportId + '&lim=' + limitations + '&err=' + errors + '&st=' + status;
         if (limitations == '' || errors == '' || status == '') {
             dataString = null;
         }
         return dataString;
     }
 
+    /* A function that sends a dataString with url to the operations.php which has all the functionality of the application*/
     function sendRequest(dataString) {
         var obj = $.ajax({
             type: "POST",
@@ -129,11 +132,38 @@ $(document).ready(function() {
         return result;
     }
 
-    function alertMessage(message, type,page) {
+    /*
+     * This method returns the id of a clicked tuple, it does not fetch from the database but gets it from the already displayed table by getting the value attribute of the trim
+     * @param void
+     */
+    function getTuplePrimaryID() {
+        $("body").on('click', 'tr', function() {
+            selectedTuple = $("tr").attr('value');
+        });
+    }
+
+    function fetchTableJSON(){
+        var dataString = 'opt=7';
+        $obj = sendRequest(dataString);
+        if($obj.result==1){
+            alert($obj.products);
+        }else{
+            alert("Could not fetch JSON");
+        }
+    }
+
+
+    /*
+     *This function displays the status message in a smooth transition
+     * @param message is the message you want to
+     * @param type is the type of alert 1 is green-success 2 is orange-warning and 3 is red-danger
+     * @param page 1 is the addTask page 2 is the viewReport page
+     */
+    function alertMessage(message, type, page) {
         var divSelected;
-        if(page==1){
+        if (page == 1) {
             divSelected = "#divStatus";
-        }else if(page==2){
+        } else if (page == 2) {
             divSelected = "#divStatus2";
         }
         $(divSelected).removeClass("green");
@@ -169,11 +199,11 @@ $(document).ready(function() {
 
 
     /****************Operations for Table*************************/
-    function getStatus(){
+    function getStatus() {
         // This method should get the status of a clicked task
         // For now it is just returning complete
         return "complete";
-}
+    }
 
 
     function editOptions() {
@@ -223,7 +253,7 @@ $(document).ready(function() {
                 addFormIsCreated = true;
             }
         } else if (type == 2) {
-            form = '<form class="createForm animated fadeIn">' + '<div class="divider"></div>'+'<textarea id="lim" placeholder="Write Your Limitations Here Max 100 words"></textarea>'+'<textarea id="err" placeholder="Write Your Limitations Here Max 100 words"></textarea>'  + '<input id="saveReport" type="button" name="add" value="Save Report" />' + '<input type="button" class="cancel" value="Cancel" />' + '</form>';
+            form = '<form class="createForm animated fadeIn">' + '<div class="divider"></div>' + '<textarea id="lim" placeholder="Write Your Limitations Here Max 100 words"></textarea>' + '<textarea id="err" placeholder="Write Your Limitations Here Max 100 words"></textarea>' + '<input id="saveReport" type="button" name="add" value="Save Report" />' + '<input type="button" class="cancel" value="Cancel" />' + '</form>';
             $(".optionalFeaturesAlpha").fadeOut();
             if (!reportFormIsCreated) {
                 $("#formSection2").append(form);
