@@ -72,7 +72,7 @@ switch($option){
             return;
         }else{
             $row=$obj->fetch();
-	       echo '{"result":1,"products":[';	/*start of json object*/
+	       echo '{"result":1,"tasks":[';	/*start of json object*/
 	       while($row){
 		      echo json_encode($row);/*convert the result array to json object*/
 		      $row=$obj->fetch();

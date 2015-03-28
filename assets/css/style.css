@@ -439,25 +439,27 @@ i.fa-search {
     color: #ccc;
 }
 }
-#listSection table {
+#listSection table, #listSection2 table {
     margin-bottom: 30px;
     border-collapse: collapse;
     font-size: 0.9em;
 }
-#listSection thead {
+#listSection thead, #listSection2 thead {
     color: #e74c3c;
     font-weight: lighter;
     text-align: left;
     text-transform: uppercase;
 }
-#listSection th {
-    width: 31%;
+#listSection th, #listSection2 th {
+    width: 1%;
     font-size: 0.8em;
     border-bottom: 1px solid #ccc;
     border-spacing: 60px;
 }
-#listSection td,
+#listSection td,#listSection2 td,
 th {
+    padding-top: 10px;
+    padding-bottom: 10px;
     padding-left: 10px;
     padding-right: 30px;
 }

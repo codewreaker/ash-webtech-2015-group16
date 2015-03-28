@@ -1,4 +1,5 @@
 <html>
+
 <head>
     <title>Index</title>
     <link rel="stylesheet" href="assets/css/style.css">
@@ -65,6 +66,8 @@
                                 <div id="title">Completed</div>
                             </div>
                             <!-- End Task Created -->
+                            <div id="taskdata"></div>
+
                         </div>
                         <!-- End Admin Page -->
 
@@ -76,35 +79,9 @@
                                 <span class="fa fa-check"></span>
                                 <span class="fa fa-times"></span>
                             </div>
+                            <div id="divStatus" class="status"></div>
                             <div id="listSection">
-                                <!-- Existing tasks go here -->
-                                <div id="viewTasks" >
-                                    <div id="divStatus" class="status">
-
-                                    </div>
-                                    <table>
-                                        <thead>
-                                            <th>Task Name</th>
-                                            <th>Description</th>
-                                            <th>Personnel</th>
-                                            <th>Due Date</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Sample Name 1</td>
-                                                <td>Sample Description</td>
-                                                <td>Sample Personnel</td>
-                                                <td>Sample Date</td>
-                                            </tr>
-                                            <tr class="odd">
-                                                <td>Sample Name 1</td>
-                                                <td>Sample Description</td>
-                                                <td>Sample Personnel</td>
-                                                <td>Sample Date</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
+                                <!-- Existing tasks go here  -->
                             </div>
                             <div id="formSection">
                                 <!-- Form Goes Here -->
@@ -120,44 +97,20 @@
 
 
 
-                          <!-- viewReportPage -->
+                        <!-- viewReportPage -->
                         <div id="viewReportPage" class="hide animated fadeIn">
-                           <div class="optionalFeaturesAlpha hide">
+                            <div class="optionalFeaturesAlpha hide">
                                 <span title="create a report" class="fa fa-file-o"></span>
                                 <span title="view details" class="fa fa-eye"></span>
                                 <span title="check as completed" class="fa fa-check"></span>
                                 <span class="fa fa-times"></span>
                             </div>
                             <!-- Create Report -->
-                              <div id="listSection">
+                            <div id="divStatus2" class="status"></div>
+                            <div id="listSection2">
                                 <!-- Existing tasks go here -->
-                                <div id="viewTasks" >
-                                    <div id="divStatus2" class="status">
-                                    </div>
-                                    <table>
-                                        <thead>
-                                            <th>Task Name</th>
-                                            <th>Description</th>
-                                            <th>Personnel</th>
-                                            <th>Due Date</th>
-                                        </thead>
-                                        <tbody>
-                                            <tr>
-                                                <td>Sample Name 1</td>
-                                                <td>Sample Description</td>
-                                                <td>Sample Personnel</td>
-                                                <td>Sample Date</td>
-                                            </tr>
-                                            <tr class="odd">
-                                                <td>Sample Name 1</td>
-                                                <td>Sample Description</td>
-                                                <td>Sample Personnel</td>
-                                                <td>Sample Date</td>
-                                            </tr>
-                                        </tbody>
-                                    </table>
-                                </div>
                             </div>
+
                             <div id="formSection2">
                                 <!-- Form Goes Here -->
                             </div>

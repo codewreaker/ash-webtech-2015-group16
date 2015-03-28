@@ -25,7 +25,7 @@ $(document).ready(function() {
     $("body").on('click', '#formSection2 .cancel', function() {
         removeForm(2);
     });
-    fetchTableJSON();
+    displayTableJSON();
     editOptions();
     addTask();
     deleteTask();
@@ -142,13 +142,40 @@ $(document).ready(function() {
         });
     }
 
-    function fetchTableJSON(){
+    /*
+     *This part of the code creates a table with the JSON data
+     *and appends it to the HTML body
+     */
+    function displayTableJSON() {
         var dataString = 'opt=7';
         $obj = sendRequest(dataString);
-        if($obj.result==1){
-            alert($obj.products);
-        }else{
-            alert("Could not fetch JSON");
+        if ($obj.result == 1) {
+            var data = $obj.tasks;
+            var count = 0;
+            var $color;
+            var prev;
+            var mid = "";
+            var end;
+            prev = '<div id="viewTasks" ><table><thead><th>Task Name</th><th>Description</th><th>Personnel</th><th>Due Date</th></thead><tbody>';
+            for (var i = 0; i < data.length; i++) {
+                if (count % 2 == 0) {
+                    $color = " ";
+                } else {
+                    $color = "odd";
+                }
+                mid = mid + '<tr class="' + $color + '" id="' + data[i].task_id + '">' +
+                    '<td>' + data[i].task_name + '</td>' +
+                    '<td>' + data[i].description + '</td>' +
+                    '<td>' + data[i].task_personnel + '</td>' +
+                    '<td>' + data[i].due_date + '</td>' +
+                    '</tr>';
+                count++;
+            }
+            end = '</tbody></table></div>';
+            var table = prev + mid + end;
+            $("#listSection, #listSection2").append(table);
+        } else {
+            alertMessage("Could not fetch JSON", 3, 1);
         }
     }
 
@@ -210,17 +237,17 @@ $(document).ready(function() {
         var x = "";
         var y = "";
         var isActive = false;
-        $("#listSection tbody").on('click', function() {
-            selectedTuple = $(this).attr('value');
+        $("#listSection tbody").on('click ', function() {
+            selectedTuple = $(this).attr('id');
             $(".optionalFeaturesAlpha").fadeIn();
         });
 
-        $("body").on('click', '.fa-times', function() {
+        $("body").on('click', '.fa - times ', function() {
             $(".optionalFeaturesAlpha").fadeOut();
         });
 
         // var gets the current position that the mouse was clicked
-        $("#listSection tbody").on('click', function(event) {
+        $("#listSection tbody").on('click ', function(event) {
             x = event.pageX;
             y = event.pageY;
             $(".optionalFeaturesAlpha").css('left', x - 150);
@@ -247,13 +274,13 @@ $(document).ready(function() {
     function addForm(type) {
         var form;
         if (type == 1) {
-            form = '<form class="createForm animated fadeIn">' + '<div class="divider"></div>' + '<input type="text" placeholder="Task Name" id="tn">' + '<select id="tp"  class="form-styling">' + '<option value="0">Select a Personnel</option>' + '</select>' + '<input type="date" id="td" class="form-styling">' + '<div>' + '<textarea id="desc" placeholder="Enter a Short Description of the Task"></textarea>' + '</div>' + '<input id="saveTask" type="button" name="add" value="Save Task" />' + '<input type="button" class="cancel" value="Cancel" />' + '</form>';
+            form = '<form class="createForm animated fadeIn" ><div class="divider"></div><input type="text" placeholder="Task Name" id="tn"><select id="tp" class="form-styling"><option value="0">Select a Personnel</option ></select><input type="date" id="td" class="form-styling"><div><textarea id="desc" placeholder="Enter a Short Description of the Task"></textarea></div><input id="saveTask" type="button" name="add" value="Save Task"/><input type="button" class="cancel" value="Cancel"/></form>';
             if (!addFormIsCreated) {
                 $("#formSection").append(form);
                 addFormIsCreated = true;
             }
         } else if (type == 2) {
-            form = '<form class="createForm animated fadeIn">' + '<div class="divider"></div>' + '<textarea id="lim" placeholder="Write Your Limitations Here Max 100 words"></textarea>' + '<textarea id="err" placeholder="Write Your Limitations Here Max 100 words"></textarea>' + '<input id="saveReport" type="button" name="add" value="Save Report" />' + '<input type="button" class="cancel" value="Cancel" />' + '</form>';
+            form = '<form class="createForm animated fadeIn"><div class="divider"></div >< textarea id = "lim" placeholder = "Write Your Limitations Here Max 100 words" ></textarea><textarea id="err" placeholder="Write Your Limitations Here Max 100 words"></textarea >< input id = "saveReport" type = "button" name = "add" value = "Save Report" / >< input type = "button" class = "cancel" value = "Cancel" / >< /form>';
             $(".optionalFeaturesAlpha").fadeOut();
             if (!reportFormIsCreated) {
                 $("#formSection2").append(form);
@@ -273,15 +300,15 @@ $(document).ready(function() {
     function removeForm(type) {
         var originalDiv;
         if (type == 1) {
-            originalDiv = '<div id="formSection"></div>';
+            originalDiv = '<div id="formSection"></div > ';
             $("#formSection").replaceWith(originalDiv);
             addFormIsCreated = false;
         } else if (type == 2) {
-            originalDiv = '<div id="formSection2"></div>';
+            originalDiv = ' < div id = "formSection2" > < /div>';
             $("#formSection2").replaceWith(originalDiv);
             reportFormIsCreated = false;
         }
     }
-    /************************************************************************************************/
+    /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 });
