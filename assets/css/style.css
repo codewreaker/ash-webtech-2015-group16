@@ -443,6 +443,7 @@ i.fa-search {
     margin-bottom: 30px;
     border-collapse: collapse;
     font-size: 0.9em;
+    cursor:hand;
 }
 #listSection thead, #listSection2 thead {
     color: #e74c3c;

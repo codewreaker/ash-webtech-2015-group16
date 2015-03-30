@@ -73,7 +73,7 @@ CREATE TABLE IF NOT EXISTS `t_task` (
   `task_admin` int(10) NOT NULL,
   `task_personnel` int(10) NOT NULL,
   `due_date` date NOT NULL,
-  `report_id` int(11) NOT NULL
+  `report_id` int(11) NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1;
 
 --

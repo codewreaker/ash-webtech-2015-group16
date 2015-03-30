@@ -110,7 +110,6 @@
                             <div id="listSection2">
                                 <!-- Existing tasks go here -->
                             </div>
-
                             <div id="formSection2">
                                 <!-- Form Goes Here -->
                             </div>

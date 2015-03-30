@@ -9,7 +9,11 @@ $(document).ready(function() {
 
     /****************Operations for Table*************************/
 
-
+    displayTableJSON();
+    editOptions();
+    addTask();
+    deleteTask();
+    addReport();
 
 
     $(".sideMenuItem, .cards").on('click', switchDiv);
@@ -19,18 +23,13 @@ $(document).ready(function() {
     $(".fa-file-o").on('click', function() {
         addForm(2);
     });
-    $("body").on('click', '#formSection .cancel', function() {
+    $("body").on('click', '#formSection .cancel,#saveTask', function() {
         removeForm(1);
     });
-    $("body").on('click', '#formSection2 .cancel', function() {
+    $("body").on('click', '#formSection2 .cancel,#removeTask', function() {
         removeForm(2);
     });
-    displayTableJSON();
-    editOptions();
-    addTask();
-    deleteTask();
-    addReport();
-    getTuplePrimaryID();
+
 
 
 
@@ -55,6 +54,7 @@ $(document).ready(function() {
             } else {
                 alertMessage("Please Fill All Fields", 2, 1);
             }
+            displayTableJSON();
         });
     }
 
@@ -72,6 +72,7 @@ $(document).ready(function() {
             } else {
                 alertMessage("Please Fill All Fields", 2, 2);
             }
+            displayTableJSON();
         });
     }
 
@@ -79,8 +80,8 @@ $(document).ready(function() {
     /********* This Function deletes a selected Table **********/
     function deleteTask() {
         $("body").on('click', '.fa-trash-o', function() {
-            //var dataString = 'cmd=2&tid='+selectedTuple;
-            var dataString = 'opt=2&tid=' + 34;
+            var temp = "1";
+            var dataString = 'opt=2&tid=' + selectedTuple;
             // validation of form data here
             // AJAX code to submit form
             var obj = sendRequest(dataString);
@@ -89,6 +90,7 @@ $(document).ready(function() {
             } else if (obj.result == 0) {
                 alertMessage(obj.message, 2, 1);
             }
+            displayTableJSON();
         });
     }
 
@@ -132,15 +134,7 @@ $(document).ready(function() {
         return result;
     }
 
-    /*
-     * This method returns the id of a clicked tuple, it does not fetch from the database but gets it from the already displayed table by getting the value attribute of the trim
-     * @param void
-     */
-    function getTuplePrimaryID() {
-        $("body").on('click', 'tr', function() {
-            selectedTuple = $("tr").attr('value');
-        });
-    }
+
 
     /*
      *This part of the code creates a table with the JSON data
@@ -173,7 +167,7 @@ $(document).ready(function() {
             }
             end = '</tbody></table></div>';
             var table = prev + mid + end;
-            $("#listSection, #listSection2").append(table);
+            $("#listSection, #listSection2").html(table);
         } else {
             alertMessage("Could not fetch JSON", 3, 1);
         }
@@ -237,17 +231,18 @@ $(document).ready(function() {
         var x = "";
         var y = "";
         var isActive = false;
-        $("#listSection tbody").on('click ', function() {
+        var table1 = '#listSection tr, #listSection2 tr';
+        $("body").on('click ', table1, function() {
             selectedTuple = $(this).attr('id');
             $(".optionalFeaturesAlpha").fadeIn();
         });
 
-        $("body").on('click', '.fa - times ', function() {
+        $("body").on('click', '.fa-times', function() {
             $(".optionalFeaturesAlpha").fadeOut();
         });
 
         // var gets the current position that the mouse was clicked
-        $("#listSection tbody").on('click ', function(event) {
+        $("body").on('click', table1, function(event) {
             x = event.pageX;
             y = event.pageY;
             $(".optionalFeaturesAlpha").css('left', x - 150);
@@ -280,14 +275,13 @@ $(document).ready(function() {
                 addFormIsCreated = true;
             }
         } else if (type == 2) {
-            form = '<form class="createForm animated fadeIn"><div class="divider"></div >< textarea id = "lim" placeholder = "Write Your Limitations Here Max 100 words" ></textarea><textarea id="err" placeholder="Write Your Limitations Here Max 100 words"></textarea >< input id = "saveReport" type = "button" name = "add" value = "Save Report" / >< input type = "button" class = "cancel" value = "Cancel" / >< /form>';
+            form = '<form class="createForm animated fadeIn" id="' + selectedTuple + '"><div class="divider"></div ><textarea id="lim" placeholder="Write Your Limitations Here Max 100 words" ></textarea><textarea id="err" placeholder="Write Your Errors Here Max 100 words"></textarea><input id="saveReport" type="button" name="add" value="Save Report"/><input type="button" class="cancel" value="Cancel"/></form>';
             $(".optionalFeaturesAlpha").fadeOut();
             if (!reportFormIsCreated) {
                 $("#formSection2").append(form);
                 reportFormIsCreated = true;
             }
         }
-
 
         /* This portion increases the height of the sidebar as you increase the tasks */
         var $toAdjust = $("#divContent").height() + 100;

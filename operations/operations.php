@@ -29,8 +29,7 @@ switch($option){
          include_once("t_task.php");
          $obj = new t_task();
          $task_id = $_POST['tid'];
-         $result = $obj->delete_task($task_id);
-         if(!$result){
+         if(!$obj->delete_task($task_id)){
             echo '{"result":0,"message":"Failed To Delete"}';
             return;
          }
