@@ -1,91 +1,124 @@
 /* This Javascript Files Deals With Scripts For Functionality */
 $(document).ready(function() {
 
-        /* A variable to check if a task has been created or not */
-        var addFormIsCreated = false;
-        var reportFormIsCreated = false;
-        var selectedTuple = "";
-        var $selectedPage = "";
+    /* A variable to check if a task has been created or not */
+    var addFormIsCreated = false;
+    var reportFormIsCreated = false;
+    var selectedTuple = "";
+    var $selectedPage = "";
 
-        /****************Operations for Table*************************/
+    /****************Operations for Table*************************/
 
-        displayTableJSON();
-        var tableDataArray = editOptions();
-        addTask();
-        deleteTask();
-        addReport();
-        editTask();
-
-
+    displayTableJSON();
+    var tableDataArray = editOptions();
+    addTask();
+    deleteTask();
+    addReport();
+    editTask();
 
 
-        $(".sideMenuItem, .cards").on('click', switchDiv);
-        $(".create").on('click', function() {
+
+
+    $(".sideMenuItem, .cards").on('click', switchDiv);
+    $(".create").on('click', function() {
+        addForm(1);
+    });
+    $(".fa-file-o").on('click', function() {
+        addForm(2);
+    });
+    $("body").on('click', '#formSection .cancel,#saveTask', function() {
+        removeForm(1);
+    });
+    $("body").on('click', '#formSection2 .cancel,#removeTask', function() {
+        removeForm(2);
+    });
+
+
+
+
+
+    /****************************************************/
+
+
+
+    /****************************Ajax Function Calls**************/
+
+    /********* This Function Adds a Task to The Database *********/
+    function addTask() {
+        $("body").on('click', '#saveTask', function() {
+            var dataString = getFormPost();
+            if (dataString != null) {
+                var obj = sendRequest(dataString);
+                if (obj.result == 1) {
+                    alertMessage(obj.message, 1, 1);
+                } else if (obj.result == 0) {
+                    alertMessage(obj.message, 3, 1);
+                }
+            } else {
+                alertMessage("Please Fill All Fields", 2, 1);
+            }
+            displayTableJSON();
+        });
+    }
+
+    /********* This Function Adds a Report to a Task *********/
+    function addReport() {
+        $("body").on('click', '#saveReport', function() {
+            var dataString = getReportPost();
+            if (dataString != null) {
+                var obj = sendRequest(dataString);
+                if (obj.result == 1) {
+                    alertMessage(obj.message, 1, 2);
+                } else if (obj.result == 0) {
+                    alertMessage(obj.message, 3, 2);
+                }
+            } else {
+                alertMessage("Please Fill All Fields", 2, 2);
+            }
+            displayTableJSON();
+        });
+    }
+
+
+    /********* This Function deletes a selected Table **********/
+    function deleteTask() {
+        $("body").on('click', '.fa-trash-o', function() {
+            var dataString = 'opt=2&tid=' + selectedTuple;
+            // validation of form data here
+            // AJAX code to submit form
+            var obj = sendRequest(dataString);
+            if (obj.result == 1) {
+                alertMessage(obj.message, 1, 1);
+            } else if (obj.result == 0) {
+                alertMessage(obj.message, 2, 1);
+            }
+            displayTableJSON();
+        });
+    }
+
+    /********* This Function deletes a selected Table **********/
+    function editTask() {
+        $("body").on('click', '.fa-edit', function() {
             addForm(1);
-        });
-        $(".fa-file-o").on('click', function() {
-            addForm(2);
-        });
-        $("body").on('click', '#formSection .cancel,#saveTask', function() {
-            removeForm(1);
-        });
-        $("body").on('click', '#formSection2 .cancel,#removeTask', function() {
-            removeForm(2);
-        });
+            $("#tn").val(tableDataArray[1]).val();
+            $("#tp").val(tableDataArray[3]).val();
+            $("#td").val(tableDataArray[4]).val();
+            $("#desc").val(tableDataArray[2]).val();
 
 
+            $("#saveTask").attr('id', 'editTask');
+            $("#editTask").attr('value', 'Update Task');
+            $(".cancel").attr('value', 'Done');
 
-
-
-        /****************************************************/
-
-
-
-        /****************************Ajax Function Calls**************/
-
-        /********* This Function Adds a Task to The Database *********/
-        function addTask() {
-            $("body").on('click', '#saveTask', function() {
-                var dataString = getFormPost();
-                if (dataString != null) {
-                    var obj = sendRequest(dataString);
-                    if (obj.result == 1) {
-                        alertMessage(obj.message, 1, 1);
-                    } else if (obj.result == 0) {
-                        alertMessage(obj.message, 3, 1);
-                    }
-                } else {
-                    alertMessage("Please Fill All Fields", 2, 1);
-                }
-                displayTableJSON();
-            });
-        }
-
-        /********* This Function Adds a Report to a Task *********/
-        function addReport() {
-            $("body").on('click', '#saveReport', function() {
-                var dataString = getReportPost();
-                if (dataString != null) {
-                    var obj = sendRequest(dataString);
-                    if (obj.result == 1) {
-                        alertMessage(obj.message, 1, 2);
-                    } else if (obj.result == 0) {
-                        alertMessage(obj.message, 3, 2);
-                    }
-                } else {
-                    alertMessage("Please Fill All Fields", 2, 2);
-                }
-                displayTableJSON();
-            });
-        }
-
-
-        /********* This Function deletes a selected Table **********/
-        function deleteTask() {
-            $("body").on('click', '.fa-trash-o', function() {
-                var dataString = 'opt=2&tid=' + selectedTuple;
-                // validation of form data here
-                // AJAX code to submit form
+            // validation of form data here
+            // AJAX code to submit form
+            $("body").on('click', '#editTask', function() {
+                var name = $("#tn").val();
+                var personnel = $("#tp").val();
+                var dueDate = $("#td").val();
+                var desc = $("#desc").val();
+                var admin = 1;
+                var dataString = 'opt=3&task_id=' + selectedTuple + '&tn=' + name + '&desc=' + desc + '&admin=' + admin + '&tp=' + personnel + '&td=' + dueDate;
                 var obj = sendRequest(dataString);
                 if (obj.result == 1) {
                     alertMessage(obj.message, 1, 1);
@@ -94,50 +127,19 @@ $(document).ready(function() {
                 }
                 displayTableJSON();
             });
-        }
+        });
+    }
 
-        /********* This Function deletes a selected Table **********/
-        function editTask() {
-            $("body").on('click', '.fa-edit', function() {
-                addForm(1);
-                $("#tn").val(tableDataArray[1]).val();
-                $("#tp").val(tableDataArray[3]).val();
-                $("#td").val(tableDataArray[4]).val();
-                $("#desc").val(tableDataArray[2]).val();
-
-
-                $("#saveTask").attr('id', 'editTask');
-                $("#editTask").attr('value', 'Update Task');
-                $(".cancel").attr('value', 'Done');
-
-                // validation of form data here
-                // AJAX code to submit form
-                $("body").on('click', '#editTask', function() {
-                    var name = $("#tn").val();
-                    var personnel = $("#tp").val();
-                    var dueDate = $("#td").val();
-                    var desc = $("#desc").val();
-                    var admin = 1;
-                    var dataString = 'opt=3&task_id=' + selectedTuple + '&tn=' + name + '&desc=' + desc + '&admin=' + admin + '&tp=' + personnel + '&td=' + dueDate;
-                    var obj = sendRequest(dataString);
-                    if (obj.result == 1) {
-                        alertMessage(obj.message, 1, 1);
-                    } else if (obj.result == 0) {
-                        alertMessage(obj.message, 2, 1);
-                    }
-                    displayTableJSON();
-                });
-            });
-        }
-
-        function viewReport(id) {
-            var dataString = 'opt=8&report_id=' + id;
-            $obj = sendRequest(dataString);
-            if($obj.result==1){
+    function viewReport(id) {
+        var dataString = 'report_id=' + id;
+        var obj = $.ajax({
+            type: "POST",
+            url: "test.php",
+            data: dataString,
+            async: false,
+        });
+        if ($obj.result == 1) {
             var data = $obj.report;
-//            var report = '<p>' + data.limitations + '</p><p>' + data.errors + '</p>' +
-//                '<p>' + data.progress_status + '</p>';
-//            $("#viewReportModal").html(report);
         } else {
             alertMessage("Could not fetch JSON", 3, 1);
         }

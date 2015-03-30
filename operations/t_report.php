@@ -27,9 +27,18 @@ function t_report(){
 		return $this ->query($str_query);
 	}
 
+    function get_task(){
+        $str_query = "SELECT `task_id`, `task_name`, `description`, `task_admin`, `task_personnel`, `due_date`, `report_id` FROM `t_task` ";
+        if(!$this->query($str_query)){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 
     function view_report($report_id){
-        $str_query = "SELECT `limitations`, `errors`, `status`, `progress_status` FROM `t_report WHERE report_id='$report_id'";
+        $str_query = "SELECT `limitations`, `errors`, `progress_status` FROM `t_report` WHERE report_id=$report_id";;
         if(!$this->query($str_query)){
             return false;
         }else{
