@@ -26,7 +26,7 @@
                 </div>
                 <div class="sideMenuItem  " title="Create Task" id="createTask"><a href="#"><i class="fa fa-plus"></i></a>
                 </div>
-                <div class="sideMenuItem  " title="Report" id="viewReport"><a href="#"><i class="fa fa-edit"></i></a>
+                <div class="sideMenuItem  " title="Report" id="viewReport"><a href="#"><i class="fa fa-file-text"></i></a>
                 </div>
                 <div class="sideMenuItem  " title="Logout" id="logout"><a href="#"><i class="fa fa-power-off"></i></a>
                 </div>
@@ -107,6 +107,9 @@
                             </div>
                             <!-- Create Report -->
                             <div id="divStatus2" class="status"></div>
+                            <div id="viewReportModal"><i class="fa fa-times"></i>
+                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero nisi provident sit obcaecati consequuntur eveniet, nobis tempore necessitatibus nam laborum illum veritatis consequatur repellendus! Deserunt iusto velit eum exercitationem dolorum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolor ipsum, quidem eligendi repellat debitis quam in asperiores eos, nihil reprehenderit tenetur, molestias deleniti provident itaque dolores placeat voluptatem.
+                            </div>
                             <div id="listSection2">
                                 <!-- Existing tasks go here -->
                             </div>

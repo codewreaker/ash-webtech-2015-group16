@@ -6,7 +6,8 @@
 // Option 4 add_report
 // Option 5 delete_report
 // Option 6 edit_report
-// Option 7 fecth all contents
+// Option 7 fetch all contents
+// Option 8 fetch report
 $option = $_REQUEST['opt'];
 
 switch($option){
@@ -38,8 +39,20 @@ switch($option){
          }
         break;
     case 3:
-        include_once("");
+        include_once("t_task.php");
         $obj = new t_task();
+        $task_id = $_POST['task_id'];
+        $task_name = $_POST['tn'];
+        $description = $_POST['desc'];
+        $admin = $_POST['admin'];
+        $task_personnel=$_POST['tp'];
+        $due_date = $_POST['td'];
+        if(!$obj->edit_task($task_id,$task_name, $description, $admin, $task_personnel, $due_date)){
+            echo '{"result":0,"message":"Failed to Update Task"}';
+            return;
+        } else{
+            echo '{"result":1,"message":"Succesfully Updated Task"}';
+        }
         break;
     case 4:
         include_once("t_report.php");
@@ -67,7 +80,7 @@ switch($option){
         include_once("t_task.php");
         $obj = new t_task();
         if(!$obj->get_task()){
-            echo '{"result":1,"message":"failed to fectch data"}';
+            echo '{"result":0,"message":"failed to fetch data"}';
             return;
         }else{
             $row=$obj->fetch();
@@ -80,6 +93,19 @@ switch($option){
 		      }
 	       }
 	       echo "]}";
+        }
+        break;
+    case 8:
+        include_once("t_report.php");
+        $obj = new t_report();
+        $report_id = $_POST('report_id');
+        if(!$obj->view_report($report_id)){
+            echo '{"result":0,"message":"failed to fetch report"}';
+        }else{
+	       echo '{"result":1,"report":[';	/*start of json object*/
+		      echo json_encode($row);/*convert the result array to json object*/
+		      $row=$obj->fetch();
+       echo "]}";
         }
         break;
     default:

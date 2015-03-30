@@ -518,3 +518,36 @@ th {
 .red{
     background-color: #D9534F;
 }
+
+#viewReportModal {
+    display: none;
+    position: absolute;
+    background: rgba(39, 39, 39, 0.81);
+    width: 400px;
+    height: inherit;
+    z-index: 3300;
+    padding: 20px;
+    border: 1px solid none;
+    color: #fff;
+    border-radius: 20px;
+    box-shadow: 2px 2px 10px rgba(39, 39, 39, 0.88);
+}
+
+#viewReportModal .fa-times{
+    position: relative;
+    font-variant-position: super;
+    top: -20px;
+    left: 390px;
+    width: 0px;
+    height: 0px;
+    padding: 0px;
+    color: #ccc;
+    font-size: 0.8em;
+
+}
+
+#viewReportModal .fa-times:hover{
+    color: #e74c3c;
+    cursor: hand;
+    transition: ease-in 0.3s;
+}

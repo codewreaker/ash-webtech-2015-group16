@@ -27,22 +27,16 @@ function t_report(){
 		return $this ->query($str_query);
 	}
 
-	function view_report(){
-		$str_query = "select * from t_report";
-		if(!$this->query($str_query)){
-			return false;
-		}
-		return $this ->fetch();
-		}
-		/*
-		$query="select * from t_report";
-		$i=0;
-		while ($i < mysql_fetch_assoc($query)){
-		  echo"Task Report.'";
-	  }
 
-        return $this-> query($query);
-*/
+    function view_report($report_id){
+        $str_query = "SELECT `limitations`, `errors`, `status`, `progress_status` FROM `t_report WHERE report_id='$report_id'";
+        if(!$this->query($str_query)){
+            return false;
+        }else{
+            return true;
+        }
+    }
+
 }
 
 
