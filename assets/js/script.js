@@ -6,6 +6,7 @@ $(document).ready(function() {
     var reportFormIsCreated = false;
     var selectedTuple = "";
     var $selectedPage = "";
+    var currAdmin = 1;
 
     /****************Operations for Table*************************/
 
@@ -117,8 +118,7 @@ $(document).ready(function() {
                 var personnel = $("#tp").val();
                 var dueDate = $("#td").val();
                 var desc = $("#desc").val();
-                var admin = 1;
-                var dataString = 'opt=3&task_id=' + selectedTuple + '&tn=' + name + '&desc=' + desc + '&admin=' + admin + '&tp=' + personnel + '&td=' + dueDate;
+                var dataString = 'opt=3&task_id=' + selectedTuple + '&tn=' + name + '&desc=' + desc + '&tp=' + personnel + '&td=' + dueDate;
                 var obj = sendRequest(dataString);
                 if (obj.result == 1) {
                     alertMessage(obj.message, 1, 1);
@@ -146,11 +146,10 @@ $(document).ready(function() {
     // Get the data from the form and validate before returning
     function getFormPost() {
         var name = $("#tn").val();
-        var admin = 1;
         var personnel = $("#tp").val();
         var date = $("#td").val();
         var description = $("#desc").val();
-        var dataString = 'opt=1&tn=' + name + '&desc=' + description + '&admin=' + admin + '&tp=' + personnel + '&td=' + date;
+        var dataString = 'opt=1&tn=' + name + '&desc=' + description +'&admin='+currAdmin+ '&tp=' + personnel + '&td=' + date;
         if (name == '' || personnel == '' || date == '' || description == '') {
             dataString = null;
         }
@@ -199,7 +198,7 @@ $(document).ready(function() {
             var prev;
             var mid = "";
             var end;
-            prev = '<div id="viewTasks" ><table><thead><th>Task Name</th><th>Description</th><th>Personnel</th><th>Due Date</th></thead><tbody>';
+            prev = '<div id="viewTasks" ><table><thead><th>Status</th><th>Task Name</th><th>Description</th><th>Personnel</th><th>Due Date</th></thead><tbody>';
             for (var i = 0; i < data.length; i++) {
                 if (count % 2 == 0) {
                     $color = " ";
@@ -207,6 +206,7 @@ $(document).ready(function() {
                     $color = "odd";
                 }
                 mid = mid + '<tr class="' + $color + '" id="' + data[i].task_id + '">' +
+                    '<td>' + check_status(data[i].task_id) + '</td>' +
                     '<td>' + data[i].task_name + '</td>' +
                     '<td>' + data[i].description + '</td>' +
                     '<td>' + data[i].task_personnel + '</td>' +
@@ -220,6 +220,20 @@ $(document).ready(function() {
         } else {
             alertMessage("Could not fetch JSON", 3, 1);
         }
+    }
+    
+    /* This function checks the state of the task and returns a corresponding check */
+    function check_status(id){
+        var state = '<i class="fa fa-check">';
+        var dataString = 'opt=8&report_id=' + id;
+        var $obj = sendRequest(dataString);
+        var data = $obj.report;             
+        if (data.progress_status == "complete") {
+            state = '<i class="fa fa-check green">';
+        } else if(data.progress_status == "incomplete"){
+            state = '<i class="fa fa-check red">';
+        }
+        return state;
     }
 
 

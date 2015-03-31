@@ -19,7 +19,7 @@ switch($option){
         $admin = $_POST['admin'];
         $personnel=$_POST['tp'];
         $due_date = $_POST['td'];
-    if(!$obj->add_task($task_name,$description,$admin,$personnel,$due_date)){
+if(!$obj->add_task($task_name,$description,$personnel,$due_date)){  
         echo '{"result":0,"message":"Failed"}';
     }
     else{
@@ -44,10 +44,9 @@ switch($option){
         $task_id = $_POST['task_id'];
         $task_name = $_POST['tn'];
         $description = $_POST['desc'];
-        $admin = $_POST['admin'];
         $task_personnel=$_POST['tp'];
         $due_date = $_POST['td'];
-        if(!$obj->edit_task($task_id,$task_name, $description, $admin, $task_personnel, $due_date)){
+        if(!$obj->edit_task($task_id,$task_name, $description, $task_personnel, $due_date)){
             echo '{"result":0,"message":"Failed to Update Task"}';
             return;
         } else{

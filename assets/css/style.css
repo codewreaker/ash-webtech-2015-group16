@@ -139,6 +139,8 @@ table.container {
     width: 100%;
     min-height: 100%;
 }
+
+
 #sidemenu {
     position: absolute;
     top: 0px;
@@ -557,6 +559,9 @@ th {
     margin: 10 auto;
 }
 
+td:nth-child(1){
+    width: 5px;
+}
 
 
 #viewReportModal .fa-times:hover{
