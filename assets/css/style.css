@@ -523,7 +523,7 @@ th {
     display: none;
     position: absolute;
     background: rgba(39, 39, 39, 0.81);
-    width: 400px;
+    width: 300px;
     height: inherit;
     z-index: 3300;
     padding: 20px;
@@ -536,8 +536,8 @@ th {
 #viewReportModal .fa-times{
     position: relative;
     font-variant-position: super;
-    top: -20px;
-    left: 390px;
+    top: -10px;
+    left: 290px;
     width: 0px;
     height: 0px;
     padding: 0px;
@@ -545,6 +545,19 @@ th {
     font-size: 0.8em;
 
 }
+#viewReportModal h1{
+    font-size: 1.4em;
+    color: #e74c3c;
+    font-weight: lighter;
+
+}
+
+#viewReportModal input[type='button']{
+    width: inherit;
+    margin: 10 auto;
+}
+
+
 
 #viewReportModal .fa-times:hover{
     color: #e74c3c;

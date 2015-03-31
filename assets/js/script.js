@@ -131,15 +131,13 @@ $(document).ready(function() {
     }
 
     function viewReport(id) {
-        var dataString = 'report_id=' + id;
-        var obj = $.ajax({
-            type: "POST",
-            url: "test.php",
-            data: dataString,
-            async: false,
-        });
+        var dataString = 'opt=8&report_id=' + id;
+        var $obj = sendRequest(dataString);
         if ($obj.result == 1) {
             var data = $obj.report;
+            var reportString = '<h1>Limitations</h1><p>' + data.limitations + '</p>' +
+                '<h1>Errors</h1><p>' + data.errors + '</p>' + '<h1>Status</h1><p>' + data.progress_status + '</p>';
+            $("#viewReportModal span").html(reportString);
         } else {
             alertMessage("Could not fetch JSON", 3, 1);
         }
@@ -313,8 +311,8 @@ $(document).ready(function() {
             y = event.pageY;
             $(".optionalFeaturesAlpha").css('left', x - 150);
             $(".optionalFeaturesAlpha").css('top', y - 80);
-            $("#viewReportModal").css('left', x - 160);
-            $("#viewReportModal").css('top', y - 90);
+            $("#viewReportModal").css('left', x - 250);
+            $("#viewReportModal").css('top', y - 160);
 
         });
         return tableData;

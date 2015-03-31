@@ -107,8 +107,7 @@
                             </div>
                             <!-- Create Report -->
                             <div id="divStatus2" class="status"></div>
-                            <div id="viewReportModal"><i class="fa fa-times"></i>
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit. Libero nisi provident sit obcaecati consequuntur eveniet, nobis tempore necessitatibus nam laborum illum veritatis consequatur repellendus! Deserunt iusto velit eum exercitationem dolorum. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Alias corporis dolor ipsum, quidem eligendi repellat debitis quam in asperiores eos, nihil reprehenderit tenetur, molestias deleniti provident itaque dolores placeat voluptatem.
+                            <div id="viewReportModal"><i class="fa fa-times"></i><span></span><input type="button" value="Edit"><input type="button" value="Delete">
                             </div>
                             <div id="listSection2">
                                 <!-- Existing tasks go here -->
