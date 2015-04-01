@@ -1,0 +1,507 @@
+/*@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);*/
+
+a,
+input:hover {
+    transition: ease;
+    transition-duration: 0.3s;
+}
+a {
+    text-decoration: none;
+    color: inherit;
+}
+body {
+    margin-left: -3px;
+    margin-top: -5px;
+    margin-bottom: -2px;
+    min-height: 100%;
+    width: 100%;
+    background-color: #ebebeb;
+    font-family: "Open Sans Light", sans-serif;
+}
+.clickspot {
+    text-decoration: underline;
+    color: blue;
+    cursor: pointer
+}
+.status {
+    display: none;
+    position: absolute;
+    margin: 80 auto;
+    z-index: 3200;
+    width: 90%;
+    font-size: 1.3em;
+    padding: 5px 0px 5px 0px;
+    text-align: center;
+    font-weight: bolder;
+    color: #fff;
+    border: 3px solid #fff;
+    border-radius: 10px
+}
+.error {
+    color: Red;
+    background-color: Yellow
+}
+#divPageMenu {
+    display: block;
+    width: 100%;
+    min-width: 100%;
+    min-height: 40px;
+    height: 40px;
+    background-color: #e74c3c;
+    padding: 5px 0px 5px 4px;
+    vertical-align: middle;
+    margin-left: -3px;
+}
+#divPageMenu input {
+    padding: 4px 0px 5px 4px;
+}
+div.menuitem {
+    display: inline;
+    width: 60%;
+    height: 350px;
+    min-width: 400px;
+    margin: 200 auto;
+    background-color:#FDF8F8;
+    float:right;
+    color: black;
+}
+#pageheader {
+    display: inline;
+    height: 1in;
+    font-size: 1.3em;
+    font-family: "Open Sans", sans-serif;
+    font-weight: bolder;
+    text-align: center;
+    color: #fff;
+    padding-left: 80px;
+    padding-right: 80;
+}
+#mainnav {
+    width: 2in;
+    vertical-align: top
+}
+#content {
+    position: absolute;
+    top: 0px;
+    left: -500px;
+    width: 99.7%;
+    min-width: 40%;
+    margin-left: 500px;
+    vertical-align: top;
+}
+.reportTable {
+    border: 1px;
+    border-collapse: collapse;
+}
+.reportTable .header {
+    background-color: #e74c3c;
+    text-transform: uppercase;
+    padding: 10px 0px 0px 20px;
+    color: White;
+}
+.reportTable .row1 {
+    background-color: #FFE0B3;
+}
+.reportTable .row2 {
+    background-color: White;
+}
+.reportTable tr:hover {
+    background-color: Yellow
+}
+.tableForm .label {
+    background-color: #CC6600;
+    text-transform: capitalize;
+    color: White;
+    text-align: right;
+}
+.tableForm .field {
+    background-color: #FFAE35;
+}
+.popupMenu {
+    background-color: #DC7518;
+    position: absolute;
+    display: none;
+    width: auto;
+}
+.popupMenu div {
+    color: #FFFFFF;
+    text-decoration: underline;
+}
+.popupMenu div:hover {
+    color: #FFFFFF;
+    text-decoration: underline;
+    background-color: #CC6600;
+}
+.popupForm {
+    background-color: #DC7518;
+    position: absolute;
+    display: none;
+    width: auto;
+}
+table.container {
+    width: 50%;
+    margin: auto 0;
+    text-align: center;
+
+}
+#sidemenu {
+    position: absolute;
+    top: 0px;
+    background-color: #272727;
+    color: aliceblue;
+    vertical-align: top;
+    z-index: 999;
+    padding: 0px;
+    margin-top: -20px;
+    padding-top: 60px;
+    cursor: hand;
+    width: 150px;
+    min-height: 100%;
+    height: inherit;
+    border: 1px solid none;
+}
+#menu {
+    position: absolute;
+    top: 0px;
+    left: 149px;
+    text-align: center;
+    color: aliceblue;
+    text-align: center;
+    border: 1px solid none;
+    padding: 16px 0px 6px 0px;
+    background-color: #ccc;
+    vertical-align: top;
+    font-size: 1.6em;
+    z-index: 1000;
+    cursor: hand;
+    min-width: 60px;
+    margin-top: 1px;
+    height: 28px;
+    border: 1px solid none;
+}
+#menu.sideMenuItem i {
+    font-size: 2em;
+    padding-right: 10px;
+}
+.sideMenuItem {
+    text-align: center;
+    border: 1px solid none;
+    text-decoration-color: #fff;
+    padding: 10px 0px 10px 0px;
+}
+.sideMenuItem i {
+    font-size: 2em;
+    padding-right: 10px;
+}
+.sideMenuItem:hover {
+    color: #e74c3c;
+    border-right: 3px solid #e74c3c;
+    transition: color 0.5s ease;
+    -o-transition: color 0.5s ease;
+    -webkit-transition: color 0.5s ease;
+    -moz-transition: color 0.5s ease;
+    transition: border-right 0.5s ease;
+    -o-transition: border-right 0.5s ease;
+    -webkit-transition: border-right 0.5s ease;
+    -moz-transition: border-right 0.5s ease;
+}
+.sideMenuItem:before {
+    color: #e74c3c;
+    border-right: 3px solid #e74c3c;
+    transition: color 0.5s ease-out;
+    -o-transition: color 0.5s ease-out;
+    -webkit-transition: color 0.5s ease-out;
+    -moz-transition: color 0.5s ease-out;
+    transition: border-right 0.5s ease-out;
+    -o-transition: border-right 0.5s ease-out;
+    -webkit-transition: border-right 0.5s ease-out;
+    -moz-transition: border-right 0.5s ease-out;
+}
+input[type=text] {
+    display: inline;
+    margin: 2px 2px 3px 2px;
+    width: 400px;
+    font-weight: 100;
+    appearance: none;
+    box-shadow: none;
+    background-color: #fff;
+}
+input[type=search] {
+    margin: 2px 2px 3px 2px;
+    min-width: 40px;
+    width: 30%;
+    font-weight: 100;
+    appearance: none;
+    box-shadow: none;
+    background-color: #fff;
+}
+input[type=date] {
+    display: inline;
+    margin: 2px 2px 3px 2px;
+    width: inherit;
+    font-weight: 100;
+    appearance: none;
+    box-shadow: none;
+    background-color: #fff;
+}
+textarea {
+    display: block;
+    margin: 2px 0px 0px 2px;
+    width: 400px;
+    height: 100px;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1em;
+    font-weight: 100;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 14px;
+    color: #e74c3c;
+}
+input,
+select {
+    border-radius: 50px;
+    border: 2px solid #ccc;
+    font-family: "Open Sans", sans-serif;
+    font-size: 0.8em;
+    height: 40px;
+    padding: 10px;
+}
+input[type=button] {
+    display: inline;
+    margin: 10px 2px 10px 2px;
+    width: inherit;
+    cursor: hand;
+    font-family: "Open Sans", sans-serif;
+    font-size: 1em;
+    font-weight: 209;
+    text-align: center;
+    padding: 6px;
+    appearance: none;
+    border: 2px solid #e74c3c;
+    color: #e74c3c;
+    background-color: #fff;
+}
+input[type=button]:hover {
+    color: #fff;
+    background-color: #e74c3c;
+}
+select {
+    display: inline;
+    margin: 2px 2px 3px 2px;
+    width: inherit;
+    font-weight: 100;
+    padding: 3px;
+    appearance: none;
+    box-shadow: none;
+    background-color: #fff;
+}
+select:focus,
+textarea:focus,
+input:focus {
+    border: 2px solid #e74c3c;
+}
+#content hide {
+    display: none;
+}
+.hide {
+    display: none;
+}
+#menu2:hover {
+    color: #e74c3c;
+    background-color: #272727;
+    border-left: 6px solid #af4600;
+    transition: color 0.5s ease;
+    -o-transition: color 0.5s ease;
+    -webkit-transition: color 0.5s ease;
+    -moz-transition: color 0.5s ease;
+    transition: border-left 0.5s ease;
+    -o-transition: border-left 0.5s ease;
+    -webkit-transition: border-left 0.5s ease;
+    -moz-transition: border-left 0.5s ease;
+}
+div.active {
+    color: #e74c3c !important;
+    border-right: 3px solid #e74c3c;
+}
+.shiftLeft {
+    position: absolute;
+    margin-left: -150px;
+}
+.shiftRight {
+    position: absolute;
+    left: 200px;
+}
+#divContent {
+    display: block;
+    width: 96.1%;
+    border: 1px solid none;
+    background-color: #fff;
+    margin: auto;
+    height: inherit;
+    min-height: 600px;
+    padding: 3% 0% 0% 4%;
+}
+.divider {
+    border-top: 1px solid rgba(231, 76, 60, 0.28);
+    padding-bottom: 10px;
+}
+.create {
+    color: #272727;
+    font-size: 1em;
+    cursor: hand;
+    padding: 5px 0px 5px 0px;
+    border-top: 1px solid rgba(231, 76, 60, 0.28);
+}
+.create i {
+    color: #e74c3c;
+    font-size: 1.4em;
+}
+hr {
+    display: block;
+    width: 80%;
+    margin-left: 0px;
+    border: 1px solid none;
+    border-bottom: 1px solid rgba(231, 76, 60, 0.72);
+}
+.create p {
+    display: inline;
+    padding-left: 20px;
+    font-size: 1.2em;
+    color: #272727;
+}
+label {
+    display: block;
+    padding: 15px 0px 0px 4px;
+    font-weight: bolder;
+    vertical-align: middle;
+}
+.form-styling {
+    display: block;
+    width: 400px !important;
+}
+.optionalFeaturesAlpha {
+    position: absolute;
+    width: 110px;
+    cursor: hand;
+    background-color: rgba(39, 39, 39, 0.69);
+    color: #fff;
+    padding: 10px 10px 10px 10px;
+    border: 1px solid none;
+    border-radius: 10px;
+    box-shadow: 2px 2px 10px rgba(39, 39, 39, 0.88);
+    font-size: 1.5em;
+}
+.optionalFeaturesAlpha:hover {
+    background-color: #272727;
+}
+.optionalFeaturesAlpha span:hover {
+    background-color: #272727;
+    color: #e74c3c;
+}
+.optionalFeaturesAlpha span {
+    padding: 5px;
+}
+.adjust {
+    transition-delay: 0.5s;
+    transition-duration: 0.9s;
+    left: -350px !important;
+    width: 88.5% !important;
+}
+i.fa-search {
+    position: relative;
+    left: -50px;
+    color: #ccc;
+}
+#txtSearch {
+    position: relative;
+}
+
+@media only screen and (max-width: 800px) {
+    #txtSearch {
+        position: absolute;
+        margin-top: 6px;
+        left: 300px;
+        top: 0px;
+    }
+    i.fa-search {
+    position: relative;
+    left: -10px;
+    color: #ccc;
+}
+}
+#listSection table {
+    margin-bottom: 30px;
+    border-collapse: collapse;
+    font-size: 0.9em;
+}
+#listSection thead {
+    color: #e74c3c;
+    font-weight: lighter;
+    text-align: left;
+    text-transform: uppercase;
+}
+#listSection th {
+    width: 31%;
+    font-size: 0.8em;
+    border-bottom: 1px solid #ccc;
+    border-spacing: 60px;
+}
+#listSection td,
+th {
+    padding-left: 10px;
+    padding-right: 30px;
+}
+.odd {
+    background-color: rgba(231, 76, 60, 0.44);
+}
+.cards {
+    display: inline-block;
+    margin: 0px 20px 10px 20px;
+    width: 220px;
+    height: 130px;
+    border-radius: 10px;
+    padding:0px 20px 0px 20px;
+    color: #fff;
+    font-size: 5.4em;
+    cursor: hand;
+}
+
+.cards i{
+    width: 90px;
+}
+ .cards:hover{
+    background-color: #e74c3c;
+    transition: ease 0.4s;
+}
+
+.cards span{
+    position: relative;
+    font-size: 0.7em;
+    bottom: 25px;
+    left: 70px;
+    text-align: right;
+
+}
+#title{
+    width: 240px;
+    padding-right: 10px;
+    text-align: right;
+    position: relative;
+    font-size: 0.25em;
+    right: 20px;
+    bottom: 40px;
+}
+
+.blue {
+    background-color: #337AB7;
+}
+
+.green{
+    background-color: #5CB85C;
+}
+.orange{
+    background-color: #F0AD4E;
+}
+.red{
+    background-color: #D9534F;
+}
