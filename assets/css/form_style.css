@@ -1,0 +1,83 @@
+head{
+ font-family: serif;
+}
+
+body{
+ background-color:#FDF8F8;
+}
+
+#form_style2{
+display: none;
+}
+
+#form_style,#form_style2{
+    width: 30%;
+    height: 350px;
+    min-width: 400px;
+    margin: 200 auto;
+    background-color:#FDF8F8;
+    float:right;
+    color: black;
+}
+
+#left{
+    width: 70%;
+    float: left;
+    color: #e74c3c;
+    text-align: center;
+    margin-top: 10%;
+    margin-bottom: 10%;
+}
+
+#text_center{
+    width: 100%;
+    text-align: center;
+    float: right;
+    color: white;
+    background-color: #e74c3c;
+}
+
+#info{
+ align-content: center;
+ width:30%;
+ margin-left: 35%;
+ margin-top: 20%;
+ color: black;
+ text-align: center;
+ font-size: 9px;
+}
+
+#form_style input[type="submit"],#form_style2 input[type="submit"]{
+    width: 70px;
+    margin: 0 auto;
+
+}
+
+
+#form_style input[type="password"],#form_style2 input[type="password"]{
+    width: 400px;
+    margin: 0 auto;
+}
+
+#form_style input[type="submit"]:hover,#form_style2 input[type="submit"]:hover{
+    width: 100%;
+    position: relative;
+    background-color:#e74c3c;
+}
+
+#form_style input[type="button"]:hover,#form_style2 input[type="button"]:hover{
+    width: 100%;
+    position: relative;
+    background-color:#e74c3c;
+}
+
+
+
+
+h3 {
+    text-align: center;
+    border: solid 1px ;
+    padding: 5%;
+    background-color: #FDF8F8;
+    color: black;
+}
