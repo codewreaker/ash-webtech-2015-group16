@@ -52,7 +52,6 @@
 		
 <!--form for editing task-->	
 
-<!--form for adding task-->	
 <div>
 <form action="edittask.php" method="GET">
 <div>Task Name	<input type="text" size="30" name="tn"> </div>
