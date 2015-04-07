@@ -230,8 +230,8 @@ $(document).ready(function() {
         var data = $obj.report;             
         if (data.progress_status == "complete") {
             state = '<i class="fa fa-check green">';
-        } else if(data.progress_status == "incomplete"){
-            state = '<i class="fa fa-check red">';
+        } if(data.progress_status == "incomplete"){
+            state = '<i class="fa fa-times red">';
         }
         return state;
     }

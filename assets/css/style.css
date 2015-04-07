@@ -461,13 +461,13 @@ i.fa-search {
 }
 #listSection td,#listSection2 td,
 th {
-    padding-top: 10px;
-    padding-bottom: 10px;
+    padding-top: 5px;
+    padding-bottom: 5px;
     padding-left: 10px;
     padding-right: 30px;
 }
 .odd {
-    background-color: rgba(231, 76, 60, 0.44);
+    background-color: rgba(180, 180, 180, 0.11);
 }
 .cards {
     display: inline-block;
@@ -521,6 +521,7 @@ th {
     background-color: #D9534F;
 }
 
+
 #viewReportModal {
     display: none;
     position: absolute;
@@ -559,8 +560,26 @@ th {
     margin: 10 auto;
 }
 
-td:nth-child(1){
-    width: 5px;
+
+#listSection th:nth-child(1),#listSection2 th:nth-child(1){
+    text-align: center;
+    background-color: #fff;
+    width:0.01%;
+}
+#listSection td:nth-child(1),#listSection2 td:nth-child(1){
+    text-align: center;
+}
+
+#listSection td:nth-child(1) i,#listSection2 td:nth-child(1) i{
+    text-align: center;
+    font-size: 1em;
+    color: #fff;
+    border: 1px solid none;
+    border-radius: 300px;
+    width: 15px;
+    height: 15px;
+    padding: 4px;
+    cursor: hand;
 }
 
 
