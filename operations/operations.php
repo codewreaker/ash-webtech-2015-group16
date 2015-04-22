@@ -1,4 +1,5 @@
 <?php
+session_start();
 
 // Option 1 add_task
 // Option 2 delete_task

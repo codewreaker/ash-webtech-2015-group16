@@ -1,0 +1,140 @@
+
+
+body{
+ background-color:#e74c3c;
+}
+
+
+
+#left{
+    width: 60%;
+    height: 120%;
+    float: left;
+    color: #e74c3c;
+    background-color:#e74c3c;
+    text-align: center;
+}
+
+
+
+#left img{
+    margin-top: 6%;
+    width: 250px;
+    height: auto;
+}
+
+#left h1{
+    position: absolute;
+    width: 59.7%;
+    top: 49%;
+    left: 0%;
+    background-color:#e74c3c;
+    text-align: center;
+    color: #fff;
+    font-family: 'Helvetica',sans-serif;
+    font-weight: bolder;
+    font-size: 4.4em;
+}
+
+#left p{
+    text-align: center;
+    color: #fff;
+    margin-top: 10%;
+    font-size: 0.7em;
+    padding: 0px 100px;
+}
+
+#left div{
+    text-align: center;
+    color: #fff;
+}
+
+
+
+
+
+#form_style, #form_style2{
+    width: 40.3%;
+    height: 100%;
+    margin-left: 60%;
+    padding: 60px 20px;
+    background-color: #fff;
+}
+
+
+
+
+#form_style input, #form_style2 input, select{
+    display: block;
+    width: 400px;
+    margin: 0px auto;
+    background-color: #fff;
+}
+
+
+#form_style label, #form_style2 label{
+    display: block;
+    width: 400px;
+    margin: 0px auto;
+    margin-top: -5px;
+    padding-bottom: 5px;
+    color: #e74c3c;
+}
+
+
+#form_style input[type="submit"], #form_style2 input[type="submit"]{
+    border: 2px solid #e74c3c;
+    color: #e74c3c;
+    font-size: 1em;
+}
+
+#form_style input[type="button"]:hover, #form_style2 input[type="button"]:hover{
+    background-color: #e74c3c;
+    color: #fff;
+    cursor: pointer
+}
+
+h3 {
+    margin-top: -30px;
+    text-align: center;
+    font-size: 2.4em;
+    font-weight: bolder;
+    font-family: sans-serif;
+    color: #ff6e5f;
+
+}
+
+#form_style2{
+    margin-top:-20px;
+}
+
+
+
+
+#form_style2 input[type="button"]{
+    margin-top:20px;
+}
+
+.lstatus {
+    display: none;
+    position: absolute;
+    left: 29%;
+    top: 30%;
+    z-index: 3200;
+    width: 50%;
+    font-size: 1.3em;
+    padding: 5px 0px 5px 0px;
+    text-align: center;
+    font-weight: bolder;
+    color: #fff;
+    border: 3px solid #fff;
+    border-radius: 10px;
+}
+
+
+
+
+
+
+
+
