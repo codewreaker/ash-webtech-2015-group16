@@ -1,12 +1,12 @@
 /* This Javascript Files Deals With Scripts For Functionality */
-$(document).ready(function() {
+$(document).ready(function () {
 
     /* A variable to check if a task has been created or not */
     var isCreated = false;
-    var selectedTuple="";
+    var selectedTuple = "";
 
 
-     /****************Operations for Table*************************/
+    /****************Operations for Table*************************/
 
 
 
@@ -29,24 +29,24 @@ $(document).ready(function() {
 
     /********* This Function Adds a Task to The Database *********/
     function addTask() {
-        $("body").on('click','#submit',function() {
+        $("body").on('click', '#submit', function () {
             var name = $("#tn").val();
             var personnel = $("#tp").val();
             var date = $("#td").val();
             var description = $("#desc").val();
-            var dataString = 'tn='+name+'&desc='+description+'&tp='+personnel+'&td='+date;
+            var dataString = 'tn=' + name + '&desc=' + description + '&tp=' + personnel + '&td=' + date;
 
             // validation of form
             if (name == '' || personnel == '' || date == '' || description == '') {
                 alert("Please fill all fields");
-            } else{
+            } else {
                 // AJAX code to submit form
                 $.ajax({
                     type: "POST",
                     url: "operations/addtask.php",
                     data: dataString,
                     cache: false,
-                    success: function() {
+                    success: function () {
                         $("#divStatus").fadeIn().delay(1000).fadeOut();
                     }
                 });
@@ -56,20 +56,20 @@ $(document).ready(function() {
 
     /********* This Function deletes a selected Table **********/
     function deleteTask() {
-        $("body").on('click','.fa-trash-o',function() {
+        $("body").on('click', '.fa-trash-o', function () {
             var id = 17;
-            var dataString = 'tid='+id;
+            var dataString = 'tid=' + id;
             // validation of form
             if (id == '') {
                 alert("You have not clicked on a tuple ");
-            } else{
+            } else {
                 // AJAX code to submit form
                 $.ajax({
                     type: "POST",
                     url: "operations/deletetask.php",
                     data: dataString,
                     cache: false,
-                    success: function(result) {
+                    success: function (result) {
                         alert(result);
                     }
                 });
@@ -97,17 +97,17 @@ $(document).ready(function() {
         var x = "";
         var y = "";
         var isActive = false;
-        $("#listSection tbody").on('click', function() {
+        $("#listSection tbody").on('click', function () {
             selectedTuple = $(this).attr('value');
             $(".optionalFeaturesAlpha").fadeIn();
         });
 
-        $("body").on('click', '.fa-times', function() {
+        $("body").on('click', '.fa-times', function () {
             $(".optionalFeaturesAlpha").fadeOut();
         });
 
         // var gets the current position that the mouse was clicked
-        $("#listSection tbody").on('click', function(event) {
+        $("#listSection tbody").on('click', function (event) {
             x = event.pageX;
             y = event.pageY;
             $(".optionalFeaturesAlpha").css('left', x - 150);
@@ -122,7 +122,7 @@ $(document).ready(function() {
         var $selectedItem = $(this).attr('id');
         var $selectedPage = "#" + $selectedItem + "Page";
         /*        $($selectedPage).toggleClass("hide");*/
-        $(".sideMenuItem").each(function() {
+        $(".sideMenuItem").each(function () {
             var $allItems = $(this).attr('id');
             var $allElements = "#" + $allItems + "Page";
             $($allElements).addClass("hide");
@@ -148,10 +148,10 @@ $(document).ready(function() {
 
     /* Remove a row when you click the delete button */
     function removeForm() {
-        var originalDiv = '<div id="formSection"></div>';
-        $("#formSection").replaceWith(originalDiv);
-        isCreated = false;
-    }
-    /************************************************************************************************/
+            var originalDiv = '<div id="formSection"></div>';
+            $("#formSection").replaceWith(originalDiv);
+            isCreated = false;
+        }
+        /************************************************************************************************/
 
 });
