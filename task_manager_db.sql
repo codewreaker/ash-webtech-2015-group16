@@ -38,13 +38,7 @@ CREATE TABLE IF NOT EXISTS `t_personnel` (
   `contact` varchar(20) NOT NULL
 ) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=latin1;
 
---
--- Dumping data for table `t_personnel`
---
 
-INSERT INTO `t_personnel` (`pid`, `first_name`, `last_name`, `user_name`, `pword`, `task_id`, `p_type`, `position`, `contact`) VALUES
-(1, 'Prophet', 'Agyeman-Prempeh', 'prophet.prempeh', '', NULL, 'admin', 'Senior Doctor', '+233272134165'),
-(2, 'Sandra', 'Botwe', 'sandra.botwe', '', NULL, 'non-admin', 'Nurse', '+233272678902');
 
 -- --------------------------------------------------------
 
@@ -104,7 +98,7 @@ ALTER TABLE `t_task`
 -- AUTO_INCREMENT for table `t_personnel`
 --
 ALTER TABLE `t_personnel`
-MODIFY `pid` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=3;
+MODIFY `pid` int(10) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=0;
 --
 -- AUTO_INCREMENT for table `t_report`
 --

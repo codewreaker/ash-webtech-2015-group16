@@ -10,11 +10,6 @@
 <body>
     <table class="container">
         <tr>
-            <!--
-            <td colspan="2" id="pageheader" style="display:none;">
-                Application Header
-            </td>
--->
         </tr>
         <tr>
             <div id="menu"><a href="#"><i class="fa fa-bars"></i></a>

@@ -23,9 +23,9 @@ switch($option){
 function login(){
     include_once("login_class.php");
         $obj = new login_class();
-        $username = $_POST['pn'];
-        $pword = md5($_POST['pw']);
-        $obj->check($username,password);
+        $username = $_REQUEST['pn'];
+        $pword = md5($_REQUEST['pw']);
+        $obj->check($username,$pword);
         $row = $obj->fetch();
         if($row==false){
             echo '{"result":0,"message":"failed to login"}';

@@ -1,25 +1,33 @@
 $(document).ready(function() {
 
-    $("body").on('click','#sign_up',function(){
+    $("body").on('click', '#sign_up', function() {
         sign_up();
     });
 
-     $("body").on('click','#login',function(){
+    $("body").on('click', '#login', function() {
         login();
     });
 
-    $("body").on('click','#login_signup',function(){
+    $("body").on('click', '#login_signup', function() {
         $('#form_style').addClass('hide');
         $('#form_style2').removeClass('hide');
     });
 
 
-    function login(){
+    function login() {
         var username = $("#username").val();
         var password = $("#password").val();
+        var dataString = 'opt=1&pn=' + username + '&pw=' + password;
+        var obj = sendLoginRequest(dataString);
+        if (obj.result == 1) {
+            alertMessage(obj.message, 1, 1);
+            window.location.replace("index.php");
+        } else {
+            alertMessage(obj.message, 2, 1);
+        }
     }
 
-    function sign_up(){
+    function sign_up() {
         var first_name = $("#fn").val();
         var last_name = $("#ln").val();
         var user_name = $("#un").val();
@@ -27,15 +35,14 @@ $(document).ready(function() {
         var pos = $("#pos option:selected").text();
         var type = $("#ptype option:selected").text();
         var tel = $("#cd").val();
-        var dataString ='opt=0&fn='+first_name+'&ln='+last_name+
-            '&un='+user_name+'&pass='+pword+'&pos='+pos+'&pt='+type+
-            '&cd='+tel;
+        var dataString = 'opt=0&fn=' + first_name + '&ln=' + last_name +
+            '&un=' + user_name + '&pass=' + pword + '&pos=' + pos + '&pt=' + type +
+            '&cd=' + tel;
         var obj = sendLoginRequest(dataString);
-        if(obj.result==1){
-            alertMessage(obj.message,1,2);
-            window.location.replace("index.php");
-        }else{
-            alertMessage(obj.message,2,2);
+        if (obj.result == 1) {
+            alertMessage(obj.message, 1, 2);
+        } else {
+            alertMessage(obj.message, 2, 2);
         }
 
     }
@@ -67,7 +74,7 @@ $(document).ready(function() {
      * @param type is the type of alert 1 is green-success 2 is orange-warning and 3 is red-danger
      * @param page 1 is the addTask page 2 is the viewReport page
      */
-   function alertMessage(message, type, page) {
+    function alertMessage(message, type, page) {
         var divSelected;
         if (page == 1) {
             divSelected = "#loginStatus";
