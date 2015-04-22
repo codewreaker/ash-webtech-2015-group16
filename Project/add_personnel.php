@@ -2,25 +2,21 @@
 <head>
 	<title>Add Personnel</title>
 	<link rel="stylesheet" href="css/style.css">
-</script>
 </head>
 <body>
-	
-
+<fieldset>
+<legend>Add Personnel</legend>
 <form method="GET" action="add_personnel.php">
-	First Name <input type="text" name ="fn">  </br>
-	Last Name <input type="text" name ="ln"></br>
-	Username <input type="text" name ="un"></br>
-	Password <input type="text" name ="pass"></br>
-	Position <input type="text" name ="pos" ></br>
-	Contact Details <input type="text" name ="cd">
-	
-	
-	</br>
-	<input type="submit" value="save">
+	First Name <input type="text" name ="fn" style = 'margin-left:25px'> </br>
+	Last Name <input type="text" name ="ln" style = 'margin-left:27px'></br>
+	Username <input type="text" name ="un" style = 'margin-left:32px'></br>
+	Password <input type="text" name ="pass" style = 'margin-left:32px'></br>
+	Position <input type="text" name ="pos" style = 'margin-left:43px'></br>
+	Contact Details <input type="text" name ="cd" style = 'margin-left:-1'></br>
+	<input type="submit" value="save" style = 'margin-left:205px'>
 
 </form>
-
+</fieldset>
 <?php
 include("t_personnel.php");
 if(isset($_REQUEST['fn'])){
@@ -38,6 +34,7 @@ if(isset($_REQUEST['fn'])){
 		echo "Adding" . $f_name;
 	}
 }
+
 ?>
 </body>
 </html>
