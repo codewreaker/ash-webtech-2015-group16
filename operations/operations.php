@@ -71,6 +71,13 @@ if(!$obj->add_task($task_name,$description,$personnel,$due_date)){
     case 5:
         include_once("t_report.php");
         $obj = new t_task();
+        $task_id = $_POST['tid'];
+       if(!$obj->mark_task($task_id)){
+            echo '{"result":0,"message":"Failed to Edit Report"}';
+            return;
+        }else{
+            echo '{"result":1,"message":"Your Report has been edited"}';
+        }
         break;
     case 6:
         include_once("t_report.php");

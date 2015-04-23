@@ -588,3 +588,74 @@ th {
     cursor: hand;
     transition: ease-in 0.3s;
 }
+
+.admin_card {
+    display: block;
+    background-color: #666;
+    width: 84%;
+    height: 150px;
+    margin: 0px 20px;
+    margin-bottom: 30px;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #e74;
+    color: #fff;
+}
+
+
+
+.admin_card i{
+    display: inline-block;
+    position: absolute;
+    left: 11%;
+    width: 10%;
+    padding-top: 30px;
+    font-size: 6.4em;
+}
+.details{
+    text-align: left;
+    display: inline-block;
+    width: 80%;
+    padding-top: 20px;
+    padding-left: 20%;
+}
+
+#curr_user_name{
+    font-size: 1.9em;
+}
+
+#curr_user_pos{
+}
+
+#curr_user_type{
+    display: inline-block;
+    position: absolute;
+    right: 20%;
+    top: 15%;
+    font-size: 1.2em;
+    text-transform: capitalize;
+    border: 1px solid #fff;
+    padding: 5px;
+    border-radius: 10px;
+    background-color: #fff;
+    color: #e74;
+}
+
+#curr_user_contact{
+    font-size: 1em;
+    padding-top: 10px;
+}
+
+
+#adminPage{
+    margin: 0 auto;
+    width: 90%;
+}
+
+
+
+#logoutPage {
+    padding-top: 40px;
+    text-align: center;
+    font-size: 6em;
+}

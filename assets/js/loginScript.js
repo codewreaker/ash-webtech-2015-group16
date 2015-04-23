@@ -21,7 +21,7 @@ $(document).ready(function() {
         var obj = sendLoginRequest(dataString);
         if (obj.result == 1) {
             alertMessage(obj.message, 1, 1);
-            window.location.replace("index.php");
+            window.location.replace("main.php");
         } else {
             alertMessage(obj.message, 2, 1);
         }

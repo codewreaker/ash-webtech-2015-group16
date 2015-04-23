@@ -32,10 +32,13 @@ function login(){
             return;
         }else if($username==$row['user_name'] && $pword==$row['pword']){
             $_SESSION["user_id"]=$row['pid'];
-            $_SESSION["firstname"]=$row['first_name'];
-            $_SESSION["lastname"]=$row['last_name'];
-            $_SESSION["password"]=$row['pword'];
-            $_SESSION["username"] = $row['user_name'];
+            $_SESSION["first_name"]=$row['first_name'];
+            $_SESSION["last_name"]=$row['last_name'];
+            $_SESSION["pword"]=$row['pword'];
+            $_SESSION["user_name"] = $row['user_name'];
+            $_SESSION["p_type"] = $row['p_type'];
+            $_SESSION["position"] = $row['position'];
+            $_SESSION["contact"] = $row['contact'];
             echo '{"result":1,"message":"successfully logged in"}';
             return;
         }else{
@@ -54,14 +57,13 @@ function logout(){
 
 /* A function that returns session details */
 function return_session_details(){
-        $_SESSION["user_id"];
-        $_SESSION["firstname"];
-        $_SESSION["lastname"];
-        $_SESSION["password"];
-        $_SESSION["username"];
-        echo '{"result":1,"session":[';
-        echo json_encode($_SESSION);
-        echo ']}';
+        if(isset($_SESSION["user_id"]) && !empty($_SESSION["user_id"])) {
+            echo '{"result":1,"session":[';
+            echo json_encode($_SESSION);
+            echo ']}';
+        }else{
+            echo '{"result":0,"message":"You are logged out"}';
+        }
 }
 
 function signup(){

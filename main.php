@@ -38,6 +38,18 @@
 
                         <!-- Add Admin Page -->
                         <div id="adminPage" class="animated fadeIn">
+
+                           <!-- User Details -->
+                           <div class="admin_card">
+                               <i class="fa fa-user"></i>
+                               <div class="details">
+                               <span id="curr_user_name"></span><br>
+                               <span id="curr_user_pos"></span><br>
+                               <span id="curr_user_type"></span><br>
+                               <span id="curr_user_contact"></span>
+                               </div>
+                           </div>
+
                             <!-- Tasks Created -->
                             <div class="cards blue" id="createTask">
                                 <i class="fa fa-tasks"></i>
@@ -124,7 +136,7 @@
 
                         <!--logoutPage -->
                         <div id="logoutPage" class="hide animated fadeIn">
-                            You are on the logout Page
+                            You have Successfully Logged Out
                         </div>
                         <!--/logoutPage -->
 
@@ -134,9 +146,10 @@
         </tr>
     </table>
     <script src="assets/js/jquery-2.1.1.min.js"></script>
+    <script src="assets/js/script.js"></script>
     <script src="assets/js/jquery.easing.min.js"></script>
     <script src="assets/js/customanimate.js"></script>
-    <script src="assets/js/script.js"></script>
+
 </body>
 
 </html>

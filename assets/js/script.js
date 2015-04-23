@@ -1,21 +1,37 @@
 /* This Javascript Files Deals With Scripts For Functionality */
 $(document).ready(function() {
-
+    var obj = get_curr_session();
     /* A variable to check if a task has been created or not */
+    var curr_user_firstname="empty";
     var addFormIsCreated = false;
     var reportFormIsCreated = false;
     var selectedTuple = "";
     var $selectedPage = "";
-    var currAdmin = 1;
+    var currAdmin;
+    var curr_user_lastname;
+    var curr_user_username;
+    var curr_user_type;
+    var curr_user_position;
+    var curr_user_contact;
+
+
+
+
 
     /****************Operations for Table*************************/
 
+
     displayTableJSON();
+//    if(curr_user_firstname==""){
+//        window.location.replace("login.php");
+
+    //}
     var tableDataArray = editOptions();
     addTask();
     deleteTask();
     addReport();
     editTask();
+    markTask();
 
 
 
@@ -32,6 +48,10 @@ $(document).ready(function() {
     });
     $("body").on('click', '#formSection2 .cancel,#removeTask', function() {
         removeForm(2);
+    });
+     $("body").on('click', '.fa-power-off', function() {
+        logout();
+
     });
 
 
@@ -97,7 +117,7 @@ $(document).ready(function() {
         });
     }
 
-    /********* This Function deletes a selected Table **********/
+    /********* This Function edits a Task*********/
     function editTask() {
         $("body").on('click', '.fa-edit', function() {
             addForm(1);
@@ -130,6 +150,25 @@ $(document).ready(function() {
         });
     }
 
+    /********* This Function edits a Task*********/
+    function markTask() {
+        $("body").on('click', 'span .fa-check', function() {
+
+            // validation of form data here
+            // AJAX code to submit form
+            $("body").on('click', '#editTask', function() {
+                var dataString = 'opt=5&tid=' + selectedTuple;
+                var obj = sendRequest(dataString);
+                if (obj.result == 1) {
+                    alertMessage(obj.message, 1, 1);
+                } else if (obj.result == 0) {
+                    alertMessage(obj.message, 2, 1);
+                }
+                displayTableJSON();
+            });
+        });
+    }
+
     function viewReport(id) {
         var dataString = 'opt=8&report_id=' + id;
         var $obj = sendRequest(dataString);
@@ -149,7 +188,7 @@ $(document).ready(function() {
         var personnel = $("#tp").val();
         var date = $("#td").val();
         var description = $("#desc").val();
-        var dataString = 'opt=1&tn=' + name + '&desc=' + description +'&admin='+currAdmin+ '&tp=' + personnel + '&td=' + date;
+        var dataString = 'opt=1&tn=' + name + '&desc=' + description + '&admin=' + currAdmin + '&tp=' + personnel + '&td=' + date;
         if (name == '' || personnel == '' || date == '' || description == '') {
             dataString = null;
         }
@@ -221,16 +260,17 @@ $(document).ready(function() {
             alertMessage("Could not fetch JSON", 3, 1);
         }
     }
-    
+
     /* This function checks the state of the task and returns a corresponding check */
-    function check_status(id){
+    function check_status(id) {
         var state = '<i class="fa fa-check">';
         var dataString = 'opt=8&report_id=' + id;
         var $obj = sendRequest(dataString);
-        var data = $obj.report;             
+        var data = $obj.report;
         if (data.progress_status == "complete") {
             state = '<i class="fa fa-check green">';
-        } if(data.progress_status == "incomplete"){
+        }
+        if (data.progress_status == "incomplete") {
             state = '<i class="fa fa-times red">';
         }
         return state;
@@ -269,8 +309,47 @@ $(document).ready(function() {
 
     }
 
+    function logout(){
+      var dataString = "opt=2"
+        var obj = $.ajax({
+            type: "POST",
+            url: "operations/login_ajax.php",
+            data: dataString,
+            async: false,
+            cache: false
+        });
+        window.location.replace("login.php");
+    }
 
+    function get_curr_session() {
+        var dataString = "opt=3"
+        var obj = $.ajax({
+            type: "POST",
+            url: "operations/login_ajax.php",
+            data: dataString,
+            async: false,
+            cache: false
+        });
 
+        var temp = $.parseJSON(obj.responseText);
+        if(temp.result==1){
+            var objResult = temp.session[0];
+            currAdmin = objResult.user_id;
+            curr_user_firstname = objResult.first_name;
+            curr_user_lastname = objResult.last_name;
+            curr_user_id = objResult.pword;
+            curr_user_username = objResult.user_name;
+            curr_user_type = objResult.p_type;
+            curr_user_position = objResult.position;
+            curr_user_contact = objResult.contact;
+            $("#curr_user_name").html(curr_user_firstname+" "+curr_user_lastname);
+            $("#curr_user_pos").html(curr_user_position);
+            $("#curr_user_type").html(curr_user_type);
+            $("#curr_user_contact").html(curr_user_contact);
+        }else if(temp.result==0){
+            window.location.replace("login.php");
+        }
+    }
 
     /***************************Ajax Function Calls**************/
 
@@ -384,6 +463,8 @@ $(document).ready(function() {
             reportFormIsCreated = false;
         }
     }
+
+
     /* * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
 
 });

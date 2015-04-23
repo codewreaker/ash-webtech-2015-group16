@@ -26,6 +26,8 @@ class t_task extends adb{
                         report_id=$task_id WHERE `task_id`=$task_id";
 			return $this->query($str_query);
 	}
+
+
 	function delete_task($task_id){
 			$str_query="delete from t_task
 						WHERE task_id= $task_id";

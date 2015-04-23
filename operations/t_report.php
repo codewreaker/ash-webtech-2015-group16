@@ -34,6 +34,11 @@ function t_report(){
         }else{
             return true;
         }
+
+         function mark_task($task_id){
+			$str_query="UPDATE t_report SET progress_status='complete' WHERE `task_id`=$task_id";
+			return $this->query($str_query);
+	}
     }
 
 
