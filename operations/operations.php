@@ -105,7 +105,7 @@ if(!$obj->add_task($task_name,$description,$personnel,$due_date)){
     case 8:
         include_once("t_report.php");
         $obj = new t_report();
-        $report_id = $_POST['report_id'];
+        $report_id = $_REQUEST['report_id'];
         if(!$obj->view_report($report_id)){
             echo '{"result":0,"message":"failed to fetch report"}';
         }else{

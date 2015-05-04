@@ -13,6 +13,7 @@ $(document).ready(function() {
     var curr_user_type;
     var curr_user_position;
     var curr_user_contact;
+    var num_of_reports=0;
 
 
 
@@ -174,8 +175,8 @@ $(document).ready(function() {
         var $obj = sendRequest(dataString);
         if ($obj.result == 1) {
             var data = $obj.report;
-            var reportString = '<h1>Limitations</h1><p>' + data.limitations + '</p>' +
-                '<h1>Errors</h1><p>' + data.errors + '</p>' + '<h1>Status</h1><p>' + data.progress_status + '</p>';
+            var reportString = '<h1>Limitations</h1><p>' + (data.limitations || "No Report Yet") + '</p>' +
+                '<h1>Errors</h1><p>' + (data.errors || "No Report Yet") + '</p>' + '<h1>Status</h1><p>' + (data.progress_status || "Incomplete") + '</p>';
             $("#viewReportModal span").html(reportString);
         } else {
             alertMessage("Could not fetch JSON", 3, 1);
@@ -237,6 +238,10 @@ $(document).ready(function() {
             var prev;
             var mid = "";
             var end;
+            $("#number_of_tasks").html(data.length);
+            num_of_reports=0;
+            $("#number_of_reports").html();
+
             prev = '<div id="viewTasks" ><table><thead><th>Status</th><th>Task Name</th><th>Description</th><th>Personnel</th><th>Due Date</th></thead><tbody>';
             for (var i = 0; i < data.length; i++) {
                 if (count % 2 == 0) {
@@ -268,10 +273,12 @@ $(document).ready(function() {
         var $obj = sendRequest(dataString);
         var data = $obj.report;
         if (data.progress_status == "complete") {
+            num_of_reports++;
+            $("#number_of_completed").html(num_of_reports);
+            $("#number_of_reports").html(num_of_reports);
             state = '<i class="fa fa-check green">';
-        }
-        if (data.progress_status == "incomplete") {
-            state = '<i class="fa fa-times red">';
+        }else{
+            state = '<i class="fa fa-times red">'
         }
         return state;
     }
@@ -402,10 +409,14 @@ $(document).ready(function() {
         $("body").on('click', table1, function(event) {
             x = event.pageX;
             y = event.pageY;
-            $(".optionalFeaturesAlpha").css('left', x - 150);
-            $(".optionalFeaturesAlpha").css('top', y - 80);
+            view_y_height =y-160;
+            if(view_y_height<-4){
+                view_y_height=0;
+            }
+            $(".optionalFeaturesAlpha").css('left',x - 150);
+            $(".optionalFeaturesAlpha").css('top',y-80 );
             $("#viewReportModal").css('left', x - 250);
-            $("#viewReportModal").css('top', y - 160);
+            $("#viewReportModal").css('top', view_y_height);
 
         });
         return tableData;
@@ -429,7 +440,7 @@ $(document).ready(function() {
     function addForm(type) {
         var form;
         if (type == 1) {
-            form = '<form class="createForm animated fadeIn" ><div class="divider"></div><input type="text" placeholder="Task Name" id="tn"><select id="tp" class="form-styling"><option value="0">Select a Personnel</option ><option value="1">Just another Option</option ></select><input type="date" id="td" class="form-styling"><div><textarea id="desc" placeholder="Enter a Short Description of the Task"></textarea></div><input id="saveTask" type="button" name="add" value="Save Task"/><input type="button" class="cancel" value="Cancel"/></form>';
+            form = '<form class="createForm animated fadeIn" ><div class="divider"></div><input type="text" placeholder="Task Name" id="tn"><select id="tp" class="form-styling"><option value="0">Select a Personnel</option ><option value="1">Doctors</option ><option value="2">Nurses</option><option value="3">Staff</option></select><input type="date" id="td" class="form-styling"><div><textarea id="desc" placeholder="Enter a Short Description of the Task"></textarea></div><input id="saveTask" type="button" name="add" value="Save Task"/><input type="button" class="cancel" value="Cancel"/></form>';
             if (!addFormIsCreated) {
                 $("#formSection").append(form);
                 addFormIsCreated = true;

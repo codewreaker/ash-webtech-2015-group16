@@ -41,6 +41,7 @@ $(document).ready(function() {
         var obj = sendLoginRequest(dataString);
         if (obj.result == 1) {
             alertMessage(obj.message, 1, 2);
+            window.location.replace("login.php");
         } else {
             alertMessage(obj.message, 2, 2);
         }
